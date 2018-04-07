@@ -50,11 +50,14 @@ const regex = /^\)]\}'\n/
 
 Cuba.prototype.query = async function (query, options) {
   const url = buildSheetUrl(this.id, query, options)
-  const result = await fetch(url, fetchOptions)
-  const text = await result.text()
-  const json = JSON.parse(text.replace(regex, '')).table
-  const schema = parseSchema(json.cols)
-  return parseRows(schema, json.rows)
+  const response = await fetch(url, fetchOptions)
+  const text = await response.text()
+  const json = JSON.parse(text.replace(regex, ''))
+  if (json.errors) {
+    throw new Error(json.errors[0].detailed_message)
+  }
+  const schema = parseSchema(json.table.cols)
+  return parseRows(schema, json.table.rows)
 }
 
 module.exports = Cuba
