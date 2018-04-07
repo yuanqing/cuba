@@ -1,5 +1,19 @@
 const fetch = require('isomorphic-unfetch')
 
+function buildSheetUrl (id, query, options) {
+  options = options || {}
+  const url = `https://docs.google.com/a/google.com/spreadsheets/d/${id}/gviz/tq?tq=${encodeURIComponent(
+    query
+  )}`
+  if (options.sheetName) {
+    return `${url}&sheet=${encodeURIComponent(options.sheetName)}`
+  }
+  if (options.sheetId) {
+    return `${url}&gid=${options.sheetId}`
+  }
+  return url
+}
+
 function parseSchema (columns) {
   return columns.map(function (column) {
     return column.label || column.id
@@ -17,7 +31,7 @@ function parseRows (schema, rows) {
 
 function Cuba (id) {
   const self = this
-  if (typeof id === 'undefined') {
+  if (id == null) {
     throw new Error('Need a Google Sheet id')
   }
   if (!(self instanceof Cuba)) {
@@ -27,18 +41,16 @@ function Cuba (id) {
   return self
 }
 
-const options = {
+const fetchOptions = {
   headers: {
     'X-DataSource-Auth': 'true'
   }
 }
 const regex = /^\)]\}'\n/
 
-Cuba.prototype.query = async function (query) {
-  const url = `https://docs.google.com/a/google.com/spreadsheets/d/${
-    this.id
-  }/gviz/tq?tq=${encodeURIComponent(query)}`
-  const result = await fetch(url, options)
+Cuba.prototype.query = async function (query, options) {
+  const url = buildSheetUrl(this.id, query, options)
+  const result = await fetch(url, fetchOptions)
   const text = await result.text()
   const json = JSON.parse(text.replace(regex, '')).table
   const schema = parseSchema(json.cols)

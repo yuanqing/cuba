@@ -1,7 +1,7 @@
 const cuba = require('./')
 
-const database = cuba('1LvhRHAmqCUBDxdxn48ziX_jUn8M8PVaxPPLvJbF0_vM')
+const database = cuba('1tXLr47ArNQjICWWDtXCABXPH__rlK0yxPsfAzpqysi8')
 ;(async function () {
-  const result = await database.query('select *')
+  const result = await database.query('select *', { sheetName: 'Sheet2' })
   console.log(result)
 })()
