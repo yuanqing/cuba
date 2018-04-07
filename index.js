@@ -8,10 +8,7 @@ function buildSheetUrl (id, query, options) {
   if (options.sheetName) {
     return `${url}&sheet=${encodeURIComponent(options.sheetName)}`
   }
-  if (options.sheetId) {
-    return `${url}&gid=${options.sheetId}`
-  }
-  return url
+  return `${url}&gid=${options.sheetId || '0'}`
 }
 
 function parseSchema (columns) {
