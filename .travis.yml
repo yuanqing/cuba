@@ -1,0 +1,15 @@
+notifications:
+  email: false
+
+language: node_js
+
+node_js:
+  - 'node'
+
+script:
+  - yarn lint
+  - yarn test
+
+after_success:
+  - yarn add --dev coveralls
+  - cat coverage/lcov.info | npx coveralls
