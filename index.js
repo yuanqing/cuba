@@ -43,13 +43,13 @@ const fetchOptions = {
     'X-DataSource-Auth': 'true'
   }
 }
-const regex = /^\)]\}'\n/
+const responsePrefixJunkRegex = /^\)]\}'\n/
 
 Cuba.prototype.query = async function (query, options) {
   const url = buildSheetUrl(this.id, query, options)
   const response = await fetch(url, fetchOptions)
   const text = await response.text()
-  const json = JSON.parse(text.replace(regex, ''))
+  const json = JSON.parse(text.replace(responsePrefixJunkRegex, ''))
   if (json.errors) {
     throw new Error(json.errors[0].detailed_message)
   }
