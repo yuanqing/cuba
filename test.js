@@ -1,5 +1,5 @@
 const test = require('ava')
-const cuba = require('./')
+const cuba = require('./src')
 
 const id = '1tXLr47ArNQjICWWDtXCABXPH__rlK0yxPsfAzpqysi8'
 

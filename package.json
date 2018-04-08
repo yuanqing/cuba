@@ -2,6 +2,7 @@
   "name": "cuba",
   "version": "0.0.0",
   "description": "",
+  "main": "src",
   "author": "Lim Yuan Qing",
   "license": "MIT",
   "repository": {
@@ -9,6 +10,8 @@
     "url": "git://github.com/yuanqing/cuba.git"
   },
   "dependencies": {
+    "JSONStream": "^1.3.2",
+    "duplexer": "^0.1.1",
     "isomorphic-unfetch": "^2.0.0"
   },
   "devDependencies": {
@@ -20,9 +23,8 @@
   "scripts": {
     "clean": "rm -rf .nyc_output coverage *.log",
     "coverage": "yarn clean && nyc --reporter=html --reporter=lcov --reporter=text npm test",
-    "fix": "prettier-standard '*.js'",
-    "lint": "standard '*.js'",
-    "start": "node example.js",
+    "fix": "prettier-standard 'src/**/*.js' 'example/**/*.js'",
+    "lint": "standard 'src/**/*.js' 'example/**/*.js'",
     "test": "ava test.js"
   }
 }
