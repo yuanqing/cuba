@@ -1,7 +1,6 @@
 const buildUrl = require('./build-url')
 const GoogleApiClient = require('./google-api-client')
 const parse = require('./parse')
-const sanitiseResponse = require('./sanitise-response')
 
 class Cuba {
   constructor (id, googleApiClient) {
@@ -19,19 +18,14 @@ class Cuba {
 
   async query (query, options) {
     const url = buildUrl(this.id, query, options)
-    const response = await this.googleApiClient.request(url)
-    const text = await response.text()
-    const json = JSON.parse(sanitiseResponse(text))
-    if (json.errors) {
-      throw new Error(json.errors[0].detailed_message)
-    }
+    const json = await this.googleApiClient.request(url)
     return parse(json.table)
   }
 
   async queryStream (query, options) {
     const url = buildUrl(this.id, query, options)
-    const response = await this.googleApiClient.request(url)
-    return response.body.pipe(sanitiseResponse.stream()).pipe(parse.stream())
+    const jsonStream = await this.googleApiClient.requestStream(url)
+    return jsonStream.pipe(parse.stream())
   }
 }
 

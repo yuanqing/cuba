@@ -1,9 +1,6 @@
-const fetch = require('isomorphic-unfetch')
-const JwtClient = require('google-auth-library').JWT
-
-const headers = {
-  'X-DataSource-Auth': 'true'
-}
+const request = require('./request')
+const getAccessToken = require('./get-access-token')
+const sanitiseResponse = require('./sanitise-response')
 
 class GoogleApiClient {
   constructor (accessToken, accessTokenExpiry) {
@@ -13,34 +10,31 @@ class GoogleApiClient {
 
   static async new (options) {
     if (options == null) {
-      return Promise.resolve(new GoogleApiClient())
+      return new GoogleApiClient()
     }
-    const client = new JwtClient({
-      email: options.clientEmail,
-      key: options.privateKey,
-      scopes: ['https://spreadsheets.google.com/feeds']
-    })
-    return new Promise(function (resolve, reject) {
-      client.authorize(function (error, token) {
-        if (error) {
-          reject(error)
-          return
-        }
-        resolve(new GoogleApiClient(token.access_token, token.expiry_date))
-      })
-    })
+    const accessToken = await getAccessToken(
+      options.clientEmail,
+      options.privateKey
+    )
+    return new GoogleApiClient(
+      accessToken.accessToken,
+      accessToken.accessTokenExpiry
+    )
   }
 
-  request (url, responseType) {
-    const headers = {
-      'X-DataSource-Auth': 'true'
+  async request (url) {
+    const response = await request(url, this.accessToken)
+    const text = sanitiseResponse(await response.text())
+    const json = JSON.parse(text)
+    if (json.errors) {
+      throw new Error(json.errors[0].detailed_message)
     }
-    if (this.accessToken) {
-      headers['Authorization'] = `Bearer ${this.accessToken}`
-    }
-    return fetch(url, {
-      headers
-    })
+    return json
+  }
+
+  async requestStream (url) {
+    const response = await request(url, this.accessToken)
+    return response.body.pipe(sanitiseResponse.stream())
   }
 }
 
