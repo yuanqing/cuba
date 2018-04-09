@@ -3,11 +3,13 @@ const Cuba = require('../')
 
 const id = '1tXLr47ArNQjICWWDtXCABXPH__rlK0yxPsfAzpqysi8'
 
-test('throws if no `id` specified', function (t) {
+test('throws if no `id` specified', async function (t) {
   t.plan(1)
-  t.throws(function () {
-    Cuba.new()
-  })
+  try {
+    await Cuba.new()
+  } catch (error) {
+    t.pass()
+  }
 })
 
 test('runs a query (defaulting to the first sheet)', async function (t) {
