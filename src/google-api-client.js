@@ -12,7 +12,10 @@ class GoogleApiClient {
     if (options == null) {
       return new GoogleApiClient()
     }
-    const client = new GoogleApiClient(options.client_email, options.private_key)
+    const client = new GoogleApiClient(
+      options.client_email,
+      options.private_key
+    )
     await client.renewAccessToken()
     return client
   }
