@@ -13,11 +13,10 @@ function sanitiseResponseStream () {
       const string = chunk.toString()
       if (isFirstChunk) {
         isFirstChunk = false
-        this.push(string.replace(responsePrefixJunkRegex, ''))
-      } else {
-        this.push(string)
+        callback(null, string.replace(responsePrefixJunkRegex, ''))
+        return
       }
-      callback()
+      callback(null, string)
     }
   })
 }
