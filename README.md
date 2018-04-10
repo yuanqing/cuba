@@ -4,7 +4,7 @@
 
 - Executes queries (written in [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage)) against a Google Sheet
 - Offers string and stream interfaces, plus a CLI
-- Perfect for prototypes and for using a Google Sheet as a collaborative datastore
+- Perfect for prototyping or for using a Google Sheet as a collaborative datastore
 
 ## Usage
 
