@@ -9,7 +9,7 @@ function sanitiseResponse (response) {
 function sanitiseResponseStream () {
   let isFirstChunk = true
   return new Transform({
-    transform: function (chunk, encoding, callback) {
+    transform (chunk, encoding, callback) {
       const string = chunk.toString()
       if (isFirstChunk) {
         isFirstChunk = false
