@@ -1,12 +1,12 @@
-function buildUrl (id, query, options) {
-  options = options || {}
+function buildUrl (id, query, serviceAccountKey) {
+  serviceAccountKey = serviceAccountKey || {}
   const url = `https://docs.google.com/a/google.com/spreadsheets/d/${id}/gviz/tq?tq=${encodeURIComponent(
     query
   )}`
-  if (options.sheetName) {
-    return `${url}&sheet=${encodeURIComponent(options.sheetName)}`
+  if (serviceAccountKey.sheetName) {
+    return `${url}&sheet=${encodeURIComponent(serviceAccountKey.sheetName)}`
   }
-  return `${url}&gid=${options.sheetId || '0'}`
+  return `${url}&gid=${serviceAccountKey.sheetId || '0'}`
 }
 
 module.exports = buildUrl

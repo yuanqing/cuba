@@ -12,16 +12,17 @@ const help = `
 Usage: cuba [query] [options]
 
 Query:
-  Query to run on the spreadsheet. Defaults to 'select *' if
-  not specified.
+  The Google Visualization API Query Language query to run. Defaults
+  to 'select *' if not specified.
 
 Options:
-  -c, --credentials <CREDENTIALS>  Path to the credentials JSON file
-                                   for making authenticated requests.
   -h, --help  Print this message.
   -i, --id <ID>  Spreadsheet ID.
-  -s, --sheetId <SHEET_ID>  Sheet ID
-  -n, --sheetName  Sheet name
+  -k, --key <KEY>  Path to the service account key JSON file, for
+                   querying private spreadsheets.
+  -s, --sheetId <SHEET_ID>  Sheet ID of the sheet to run the query
+                            on. Defaults to '0' if not specified.
+  -n, --sheetName  Sheet name of the sheet to run the query on.
   -v, --version  Print the version number.
 `
 
@@ -31,17 +32,17 @@ const logError = function (message) {
 }
 
 const knownOptions = {
-  credentials: String,
   help: Boolean,
   id: String,
+  key: String,
   sheetName: String,
   sheetId: String,
   version: Boolean
 }
 const shorthands = {
-  c: '--credentials',
   h: '--help',
   i: '--id',
+  k: '--key',
   s: '--sheetId',
   n: '--sheetName',
   v: '--version'
@@ -61,10 +62,10 @@ if (options.version) {
 
 const query = options.argv.remain[0]
 const id = options.id
-const credentials = require(path.join(process.cwd(), options.credentials))
+const key = require(path.join(process.cwd(), options.key))
 ;(async function () {
   try {
-    const database = await Cuba.new(id, credentials)
+    const database = await Cuba.new(id, key)
     const stream = await database.queryStream(query)
     stream.pipe(prettyPrintJson()).pipe(process.stdout)
   } catch (error) {

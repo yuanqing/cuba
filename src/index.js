@@ -18,14 +18,14 @@ class Cuba {
     return new Cuba(id, googleApiClient)
   }
 
-  async query (query, options) {
-    const url = buildUrl(this.id, query || selectAllQuery, options)
+  async query (query, serviceAccountKey) {
+    const url = buildUrl(this.id, query || selectAllQuery, serviceAccountKey)
     const json = await this.googleApiClient.request(url)
     return parse(json.table)
   }
 
-  async queryStream (query, options) {
-    const url = buildUrl(this.id, query || selectAllQuery, options)
+  async queryStream (query, serviceAccountKey) {
+    const url = buildUrl(this.id, query || selectAllQuery, serviceAccountKey)
     const jsonStream = await this.googleApiClient.requestStream(url)
     return jsonStream.pipe(parse.stream())
   }
