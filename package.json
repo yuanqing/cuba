@@ -32,5 +32,8 @@
     "lint": "standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "start": "src/cli.js --id 1jarTHL5x2r-YOY4y7fdUWfMyW419xhz031PKrnZpHJo --credentials example/credentials.json 'select *'",
     "test": "ava test"
-  }
+  },
+  "files": [
+    "src"
+  ]
 }
