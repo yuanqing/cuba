@@ -2,8 +2,8 @@
 
 const nopt = require('nopt')
 const path = require('path')
-const stringify = require('JSONStream').stringify
-const Transform = require('stream').Transform
+
+const prettyPrintJson = require('./pretty-print-json')
 
 const Cuba = require('../')
 
@@ -30,7 +30,11 @@ const query = options.argv.remain[0]
 const id = options.id
 const credentials = require(path.join(process.cwd(), options.credentials))
 ;(async function () {
-  const database = await Cuba.new(id, credentials)
-  const stream = await database.queryStream(query)
-  stream.pipe(stringify()).pipe(process.stdout)
+  try {
+    const database = await Cuba.new(id, credentials)
+    const stream = await database.queryStream(query)
+    stream.pipe(prettyPrintJson()).pipe(process.stdout)
+  } catch (error) {
+    logError(error)
+  }
 })()
