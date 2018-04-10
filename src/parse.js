@@ -35,6 +35,9 @@ function parseStream () {
   parseRowStream.on('data', function (data) {
     readableStream.push(parseRow(schema, data))
   })
+  parseRowStream.on('end', function () {
+    readableStream.push(null)
+  })
   return duplexer(parseRowStream, readableStream)
 }
 
