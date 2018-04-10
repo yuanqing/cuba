@@ -4,8 +4,26 @@ const nopt = require('nopt')
 const path = require('path')
 
 const prettyPrintJson = require('./pretty-print-json')
+const version = require('../package.json').version
 
 const Cuba = require('../')
+
+const help = `
+Usage: cuba [query] [options]
+
+Query:
+  Query to run on the spreadsheet. Defaults to 'select *' if
+  not specified.
+
+Options:
+  -c, --credentials <CREDENTIALS>  Path to the credentials JSON file
+                                   for making authenticated requests.
+  -h, --help  Print this message.
+  -i, --id <ID>  Spreadsheet ID.
+  -s, --sheetId <SHEET_ID>  Sheet ID
+  -n, --sheetName  Sheet name
+  -v, --version  Print the version number.
+`
 
 const logError = function (message) {
   console.error('cuba: ' + message)
@@ -15,18 +33,33 @@ const logError = function (message) {
 const knownOptions = {
   credentials: String,
   help: Boolean,
-  id: String
+  id: String,
+  sheetName: String,
+  sheetId: String,
+  version: Boolean
 }
 const shorthands = {
   c: '--credentials',
   h: '--help',
-  i: '--id'
+  i: '--id',
+  s: '--sheetId',
+  n: '--sheetName',
+  v: '--version'
 }
 
-const args = process.argv.slice(2)
-const options = nopt(knownOptions, shorthands, args, 0)
-const query = options.argv.remain[0]
+const options = nopt(knownOptions, shorthands)
 
+if (options.help) {
+  console.log(help)
+  process.exit(0)
+}
+
+if (options.version) {
+  console.log(version)
+  process.exit(0)
+}
+
+const query = options.argv.remain[0]
 const id = options.id
 const credentials = require(path.join(process.cwd(), options.credentials))
 ;(async function () {
