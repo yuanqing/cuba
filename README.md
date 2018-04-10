@@ -1,6 +1,6 @@
 # cuba [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba)
 
-> Easily get data out of a Google Sheet.
+> Stream data out of a Google Sheet.
 
 - Executes queries (written in [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage)) against a Google Sheet
 - Offers string and stream interfaces, plus a CLI
