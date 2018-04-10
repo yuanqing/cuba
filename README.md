@@ -8,14 +8,13 @@
 
 ## Usage
 
-
 ## API
 
 ```js
 const Cuba = require('cuba')
 ```
 
-### const database = Cuba.new(id [, serviceAccountKey])
+### const database = await Cuba.new(id [, serviceAccountKey])
 
 ### database.query([query])
 
