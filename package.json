@@ -1,7 +1,7 @@
 {
   "name": "cuba",
   "version": "0.0.0",
-  "description": "",
+  "description": "Stream data out of a Google Sheet.",
   "main": "src",
   "author": "Lim Yuan Qing",
   "license": "MIT",
