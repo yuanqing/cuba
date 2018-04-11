@@ -1,24 +1,24 @@
-# cuba [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba)
+# cuba [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) ![Stability Experimental](http://img.shields.io/badge/stability-experimental-red.svg?style=flat)
 
-> Stream data out of a Google Sheet.
+> Stream data out of Google Sheets.
 
-- Executes queries (written in [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage)) against a Google Sheet
-- Offers string and stream interfaces, plus a CLI
-- Perfect for prototyping or for using a Google Sheet as a collaborative datastore
+- [Execute queries](https://developers.google.com/chart/interactive/docs/querylanguage) against a Google Sheets spreadsheet
+- Perfect for prototyping or for using Google Sheets as a collaborative datastore
+- Use the string or stream API, or the CLI
 
 ## Usage
 
 ## API
 
 ```js
-const Cuba = require('cuba')
+const cuba = require('cuba')
 ```
 
-### const database = await Cuba.new(id [, serviceAccountKey])
+### const database = await cuba(id [, serviceAccountKey])
 
-### database.query([query])
+### const string = await database.query([query])
 
-### database.queryStream([query])
+### const stream = await database.queryStream([query])
 
 ## CLI
 
@@ -27,17 +27,17 @@ Usage: cuba [query] [options]
 
 Query:
   The Google Visualization API Query Language query to run on the
-  Google Sheet. Defaults to 'select *'.
+  Google Sheet spreadsheet. Defaults to 'select *'.
 
 Options:
   -h, --help  Print this message.
   -i, --id <id>  A Google Sheet spreadsheet ID.
   -k, --key <path>  Path to a service account key JSON file, for
                     querying private spreadsheets.
-  -s, --sheetId <sheet_id>  Sheet ID of the sheet to run the query
-                            on. Defaults to '0'.
-  -n, --sheetName <sheet_name>  Sheet name of the sheet to run the
-                                query on.
+  -s, --sheetId <sheetId>  Sheet ID of the sheet to run the query
+                           on. Defaults to '0'.
+  -n, --sheetName <sheetName>  Sheet name of the sheet to run the
+                               query on.
   -v, --version  Print the version number.
 ```
 
