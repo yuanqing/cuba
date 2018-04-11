@@ -12,17 +12,18 @@ const help = `
 Usage: cuba [query] [options]
 
 Query:
-  The Google Visualization API Query Language query to run. Defaults
-  to 'select *' if not specified.
+  The Google Visualization API Query Language query to run on the
+  Google Sheet. Defaults to 'select *'.
 
 Options:
   -h, --help  Print this message.
-  -i, --id <ID>  Spreadsheet ID.
-  -k, --key <KEY>  Path to the service account key JSON file, for
-                   querying private spreadsheets.
-  -s, --sheetId <SHEET_ID>  Sheet ID of the sheet to run the query
-                            on. Defaults to '0' if not specified.
-  -n, --sheetName  Sheet name of the sheet to run the query on.
+  -i, --id <id>  A Google Sheet spreadsheet ID.
+  -k, --key <path>  Path to a service account key JSON file, for
+                    querying private spreadsheets.
+  -s, --sheetId <sheet_id>  Sheet ID of the sheet to run the query
+                            on. Defaults to '0'.
+  -n, --sheetName <sheet_name>  Sheet name of the sheet to run the
+                                query on.
   -v, --version  Print the version number.
 `
 
