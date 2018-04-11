@@ -8,18 +8,6 @@ class GoogleApiClient {
     this.privateKey = privateKey
   }
 
-  static async new (options) {
-    if (options == null) {
-      return new GoogleApiClient()
-    }
-    const client = new GoogleApiClient(
-      options.client_email,
-      options.private_key
-    )
-    await client.renewAccessToken()
-    return client
-  }
-
   async renewAccessToken () {
     if (
       this.accessTokenExpiry == null ||
@@ -52,4 +40,16 @@ class GoogleApiClient {
   }
 }
 
-module.exports = GoogleApiClient
+async function googleApiClient (serviceAccountKey) {
+  if (serviceAccountKey == null) {
+    return new GoogleApiClient()
+  }
+  const googleApiClient = new GoogleApiClient(
+    serviceAccountKey.client_email,
+    serviceAccountKey.private_key
+  )
+  await googleApiClient.renewAccessToken()
+  return googleApiClient
+}
+
+module.exports = googleApiClient
