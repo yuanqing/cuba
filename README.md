@@ -1,10 +1,9 @@
 # cuba [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) ![Stability Experimental](http://img.shields.io/badge/stability-experimental-red.svg?style=flat)
 
-> Stream data out of Google Sheets.
+> Stream data out your Google Sheets spreadsheet.
 
-- [Execute queries](https://developers.google.com/chart/interactive/docs/querylanguage) against a Google Sheets spreadsheet
-- Perfect for prototyping or for using Google Sheets as a collaborative datastore
-- Use the string or stream API, or the CLI
+- Run [Google Visualization API Query Language queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against a Google Sheets spreadsheet
+- Perfect for prototyping or for leveraging Google Sheets as a collaborative datastore
 
 ## Usage
 
@@ -14,11 +13,27 @@
 const cuba = require('cuba')
 ```
 
-### const database = await cuba(id [, serviceAccountKey])
+### const spreadsheet = await cuba(spreadsheetId [, serviceAccountKey])
 
-### const string = await database.query([query])
+Returns a Promise for a Cuba instance.
 
-### const stream = await database.queryStream([query])
+- [`spreadsheetId`](https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id) is a string representing the Google Sheets spreadsheet to be queried. It is the value between `/d/` and `/edit` of the spreadsheet URL.
+- [`serviceAccountKey`](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#overview) is an optional object literal containing the credentials for running queries on private spreadsheets.
+
+### const string = await spreadsheet.query([query, options])
+
+Returns a Promise for an array containing the results of executing the specified `query` on the spreadsheet.
+
+- `options` is an optional object literal.
+
+    Key | Description | Default
+    :-|:-|:-
+    `sheetId` | ID of the sheet to run the query on. Ignored if `sheetName` is specified. | `0`
+    `sheetName` | Name of the sheet to run the query on. | `undefined`
+
+### const stream = await spreadsheet.queryStream([query, options])
+
+Just like the `query` method, but returns a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) instead.
 
 ## CLI
 
@@ -27,16 +42,16 @@ Usage: cuba [query] [options]
 
 Query:
   The Google Visualization API Query Language query to run on the
-  Google Sheet spreadsheet. Defaults to 'select *'.
+  Google Sheets spreadsheet. Defaults to 'select *'.
 
 Options:
   -h, --help  Print this message.
-  -i, --id <id>  A Google Sheet spreadsheet ID.
-  -k, --key <path>  Path to a service account key JSON file, for
-                    querying private spreadsheets.
-  -s, --sheetId <sheetId>  Sheet ID of the sheet to run the query
-                           on. Defaults to '0'.
-  -n, --sheetName <sheetName>  Sheet name of the sheet to run the
+  -i, --id <id>  A Google Sheets spreadsheet ID.
+  -k, --key <path>  Path to a service account key JSON file, if
+                    running the query on a private spreadsheet.
+  -s, --sheetId <sheetId>  ID of the sheet to run the query on.
+                           Defaults to '0'.
+  -n, --sheetName <sheetName>  Name of the sheet to run the
                                query on.
   -v, --version  Print the version number.
 ```
