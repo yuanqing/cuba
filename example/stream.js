@@ -3,12 +3,12 @@ const Transform = require('stream').Transform
 const cuba = require('../')
 const serviceAccountKey = require('./key.json')
 ;(async function () {
-  const database = await cuba(
+  const spreadsheet = await cuba(
     '1jarTHL5x2r-YOY4y7fdUWfMyW419xhz031PKrnZpHJo',
     serviceAccountKey
   )
   const query = 'select *'
-  const stream = await database.queryStream(query)
+  const stream = await spreadsheet.queryStream(query)
   stream.pipe(
     new Transform({
       objectMode: true,
