@@ -1,6 +1,6 @@
 const cuba = require('..')
 
-cuba('1pmu7es_1Wji_6G8EAvIjoMJvuJjqdr4_N8GoDLMTxC8')
+cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
   .then(function (spreadsheet) {
     return spreadsheet.query('select *')
   })
