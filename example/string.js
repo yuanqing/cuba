@@ -1,9 +1,6 @@
 const cuba = require('..')
-
-cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
-  .then(function (spreadsheet) {
-    return spreadsheet.query('select *')
-  })
-  .then(function (result) {
-    console.log(result)
-  })
+;(async function () {
+  const spreadsheet = await cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
+  const results = await spreadsheet.query('select *')
+  console.log(results)
+})()
