@@ -6,7 +6,7 @@ const path = require('path')
 const prettyPrintJson = require('./pretty-print-json')
 const version = require('../package.json').version
 
-const Cuba = require('../')
+const cuba = require('..')
 
 const help = `
 Usage: cuba [query] [options]
@@ -63,10 +63,11 @@ if (options.version) {
 
 const query = options.argv.remain[0]
 const id = options.id
-const key = require(path.join(process.cwd(), options.key))
+const serviceAccountKey =
+  options.key && require(path.join(process.cwd(), options.key))
 ;(async function () {
   try {
-    const database = await Cuba.new(id, key)
+    const database = await cuba(id, serviceAccountKey)
     const stream = await database.queryStream(query)
     stream.pipe(prettyPrintJson()).pipe(process.stdout)
   } catch (error) {
