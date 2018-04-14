@@ -2,7 +2,7 @@
 
 > Stream data out of Google Sheets.
 
-- Run [SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against a Google Sheets spreadsheet
+- Run [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage#overview) queries against a Google Sheets spreadsheet
 - Perfect for prototyping or for leveraging Google Sheets as a collaborative datastore
 
 ## Usage
@@ -34,7 +34,7 @@ Returns a Promise for an array containing the results of executing the specified
 
 ### const stream = await spreadsheet.queryStream([query, options])
 
-Just like the `query` method, but returns a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) instead.
+Just like the `query` method, but returns a Promise for a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable).
 
 ## CLI
 
