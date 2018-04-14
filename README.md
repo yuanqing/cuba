@@ -12,13 +12,11 @@ Given [a particular Google Sheets spreadsheet,](https://docs.google.com/spreadsh
 ```js
 const cuba = require('cuba')
 
-cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU8')
-  .then(function (spreadsheet) {
-    return spreadsheet.query('select *')
-  })
-  .then(function (result) {
-    console.log(result)
-  })
+;(async function () {
+  const spreadsheet = await cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
+  const results = await spreadsheet.query('select *')
+  console.log(results)
+})()
 ```
 
 &hellip;or with [the CLI:](#cli)
@@ -56,7 +54,7 @@ And&hellip; we&rsquo;re done! Cuba will work as in [the above Usage example](#us
 
 ### Method 2 &mdash; Give a Service Account view access to the spreadsheet
 
-The procedure is a bit more involved if link sharing is disabled on the spreadsheet.
+This is if you do not want to enable link sharing on the spreadsheet.
 
 <details>
 <summary><strong>1. Create a Service Account on the Google API Console.</strong></summary>
@@ -114,7 +112,7 @@ Returns a Promise for a Cuba instance.
 
 ### const string = await spreadsheet.query([query, options])
 
-Returns a Promise for an array containing the results of executing the specified `query` on the spreadsheet.
+Returns a Promise for an array containing the results of running the specified `query` on the spreadsheet.
 
 - `query` is a [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage#overview) query. Defaults to `'select *'`.
 - `options` is an optional object literal.
