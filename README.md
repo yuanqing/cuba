@@ -104,7 +104,7 @@ const cuba = require('cuba')
 
 Returns a Promise for a Cuba instance.
 
-- [`spreadsheetId`](https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id) is a string representing the Google Sheets spreadsheet to be queried. It is the value between `/d/` and `/edit` of the spreadsheet URL.
+- [`spreadsheetId`](https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id) is a string representing the Google Sheets spreadsheet to be queried. This is the value between `/d/` and `/edit` in the spreadsheet URL.
 - [`serviceAccountCredentials`](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#overview) is an optional object literal, for running queries on private spreadsheets.
 
     Key | Description | Default
@@ -121,7 +121,7 @@ Returns a Promise for an array containing the results of executing the specified
 
     Key | Description | Default
     :-|:-|:-
-    `sheetId` | ID of the sheet to run the query on. Ignored if `sheetName` is specified. | `0`
+    `sheetId` | ID of the sheet to run the query on. This is the value after `#gid=` in the spreadsheet URL. Ignored if `sheetName` is specified. | `0`
     `sheetName` | Name of the sheet to run the query on. | `undefined`
     `transform` | A function for transforming each item in the result. | The identity function
 
@@ -140,12 +140,14 @@ Query:
 
 Options:
   -h, --help  Print this message.
-  -i, --id <id>  A Google Sheets spreadsheet ID.
-  -c, --credentials <path>  Path to the Service Account credentials
+  -i, --id <id>  The Google Sheets spreadsheet ID. This is the value
+                 between `/d/` and `/edit` in the spreadsheet URL.
+  -c, --credentials <path>  Path to the service account credentials
                             JSON file, if running the query on a
-                            private spreadsheet.
-  -s, --sheetId <sheetId>  ID of the sheet to run the query on.
-                           Defaults to '0'.
+                            spreadsheet with link sharing disabled.
+  -s, --sheetId <sheetId>  ID of the sheet to run the query on. This
+                           is the value after `#gid=` in the
+                           spreadsheet URL. Defaults to '0'.
   -n, --sheetName <sheetName>  Name of the sheet to run the
                                query on.
   -v, --version  Print the version number.
