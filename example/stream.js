@@ -1,5 +1,4 @@
 const cuba = require('..')
-const serviceAccountKey = require('./key.json')
 const Transform = require('stream').Transform
 
 cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
