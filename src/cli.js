@@ -18,8 +18,9 @@ Query:
 Options:
   -h, --help  Print this message.
   -i, --id <id>  A Google Sheets spreadsheet ID.
-  -k, --key <path>  Path to a service account key JSON file, if
-                    running the query on a private spreadsheet.
+  -c, --credentials <path>  Path to the service account credentials
+                            JSON file, if running the query on a
+                            private spreadsheet.
   -s, --sheetId <sheetId>  ID of the sheet to run the query on.
                            Defaults to '0'.
   -n, --sheetName <sheetName>  Name of the sheet to run the
@@ -33,17 +34,17 @@ const logError = function (message) {
 }
 
 const knownOptions = {
+  credentials: String,
   help: Boolean,
   id: String,
-  key: String,
   sheetName: String,
   sheetId: String,
   version: Boolean
 }
 const shorthands = {
+  c: '--credentials',
   h: '--help',
   i: '--id',
-  k: '--key',
   s: '--sheetId',
   n: '--sheetName',
   v: '--version'
@@ -63,11 +64,11 @@ if (options.version) {
 
 const query = options.argv.remain[0]
 const id = options.id
-const serviceAccountKey =
+const serviceAccountCredentials =
   options.key && require(path.join(process.cwd(), options.key))
 ;(async function () {
   try {
-    const database = await cuba(id, serviceAccountKey)
+    const database = await cuba(id, serviceAccountCredentials)
     const stream = await database.queryStream(query)
     stream.pipe(prettyPrintJson()).pipe(process.stdout)
   } catch (error) {

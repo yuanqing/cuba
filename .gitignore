@@ -3,4 +3,4 @@
 /node_modules
 .nyc_output
 *.log
-example/key.json
+example/service-acount-credentials.json

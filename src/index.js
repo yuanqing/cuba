@@ -29,11 +29,11 @@ class Cuba {
   }
 }
 
-async function createCuba (spreadsheetId, serviceAccountKey) {
+async function createCuba (spreadsheetId, serviceAccountCredentials) {
   if (spreadsheetId == null) {
     throw new Error('Need a spreadsheet ID')
   }
-  const googleApiClient = await createGoogleApiClient(serviceAccountKey)
+  const googleApiClient = await createGoogleApiClient(serviceAccountCredentials)
   return new Cuba(spreadsheetId, googleApiClient)
 }
 

@@ -43,13 +43,15 @@ class GoogleApiClient {
   }
 }
 
-async function googleApiClient (serviceAccountKey) {
-  if (serviceAccountKey == null) {
+async function googleApiClient (serviceAccountCredentials) {
+  if (serviceAccountCredentials == null) {
     return new GoogleApiClient(null, null)
   }
   const googleApiClient = new GoogleApiClient(
-    serviceAccountKey.client_email,
-    serviceAccountKey.private_key
+    serviceAccountCredentials.clientEmail ||
+      serviceAccountCredentials.client_email,
+    serviceAccountCredentials.privateKey ||
+      serviceAccountCredentials.private_key
   )
   await googleApiClient.renewAccessToken()
   return googleApiClient
