@@ -17,12 +17,14 @@ Query:
 
 Options:
   -h, --help  Print this message.
-  -i, --id <id>  A Google Sheets spreadsheet ID.
+  -i, --id <id>  The Google Sheets spreadsheet ID. This is the value
+                 between \`/d/\` and \`/edit\` in the spreadsheet URL.
   -c, --credentials <path>  Path to the service account credentials
                             JSON file, if running the query on a
-                            private spreadsheet.
-  -s, --sheetId <sheetId>  ID of the sheet to run the query on.
-                           Defaults to '0'.
+                            spreadsheet with link sharing disabled.
+  -s, --sheetId <sheetId>  ID of the sheet to run the query on. This
+                           is the value after \`#gid=\` in the
+                           spreadsheet URL. Defaults to '0'.
   -n, --sheetName <sheetName>  Name of the sheet to run the
                                query on.
   -v, --version  Print the version number.
