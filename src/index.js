@@ -4,6 +4,10 @@ const parse = require('./parse')
 
 const selectAllQuery = 'select *'
 
+function identity (object) {
+  return object
+}
+
 class Cuba {
   constructor (spreadsheetId, googleApiClient) {
     this.spreadsheetId = spreadsheetId
@@ -13,13 +17,15 @@ class Cuba {
   async query (query, options) {
     const url = buildUrl(this.spreadsheetId, query || selectAllQuery, options)
     const json = await this.googleApiClient.request(url)
-    return parse(json.table)
+    return parse(json.table, (options && options.transform) || identity)
   }
 
   async queryStream (query, options) {
     const url = buildUrl(this.spreadsheetId, query || selectAllQuery, options)
     const jsonStream = await this.googleApiClient.requestStream(url)
-    return jsonStream.pipe(parse.stream())
+    return jsonStream.pipe(
+      parse.stream((options && options.transform) || identity)
+    )
   }
 }
 

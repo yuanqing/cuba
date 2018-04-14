@@ -8,21 +8,21 @@ function parseColumns (columns) {
   })
 }
 
-function parseRow (schema, row) {
+function parseRow (schema, row, transform) {
   return row.reduce(function (result, cell, index) {
-    result[schema[index]] = cell ? cell.v : null
+    result[schema[index]] = transform(cell ? cell.v : null)
     return result
   }, {})
 }
 
-function parse (table) {
+function parse (table, transform) {
   const schema = parseColumns(table.cols)
   return table.rows.map(function (row) {
-    return parseRow(schema, row.c)
+    return parseRow(schema, row.c, transform)
   })
 }
 
-function parseStream () {
+function parseStream (transform) {
   const readableStream = new Readable({
     objectMode: true,
     read: function () {}
@@ -33,7 +33,7 @@ function parseStream () {
     schema = parseColumns(data.cols)
   })
   parseRowStream.on('data', function (data) {
-    readableStream.push(parseRow(schema, data))
+    readableStream.push(parseRow(schema, data, transform))
   })
   parseRowStream.on('end', function () {
     readableStream.push(null)
