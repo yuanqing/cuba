@@ -30,7 +30,7 @@ Returns a Promise for an array containing the results of executing the specified
     :-|:-|:-
     `sheetId` | ID of the sheet to run the query on. Ignored if `sheetName` is specified. | `0`
     `sheetName` | Name of the sheet to run the query on. | `undefined`
-    `transform` | A function to transform each item in the result | The identity function
+    `transform` | A function for transforming each item in the result. | The identity function
 
 ### const stream = await spreadsheet.queryStream([query, options])
 
