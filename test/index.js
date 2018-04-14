@@ -1,7 +1,7 @@
 const test = require('ava')
-const cuba = require('../')
+const cuba = require('..')
 
-const id = '1tXLr47ArNQjICWWDtXCABXPH__rlK0yxPsfAzpqysi8'
+const id = '1pmu7es_1Wji_6G8EAvIjoMJvuJjqdr4_N8GoDLMTxC8'
 
 test('throws if no `id` specified', async function (t) {
   t.plan(1)
