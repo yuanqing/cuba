@@ -1,11 +1,9 @@
-const cuba = require('../')
-const serviceAccountKey = require('./key.json')
-;(async function () {
-  const spreadsheet = await cuba(
-    '1jarTHL5x2r-YOY4y7fdUWfMyW419xhz031PKrnZpHJo',
-    serviceAccountKey
-  )
-  const query = 'select *'
-  const result = await spreadsheet.query(query)
-  console.log(result)
-})()
+const cuba = require('..')
+
+cuba('1pmu7es_1Wji_6G8EAvIjoMJvuJjqdr4_N8GoDLMTxC8')
+  .then(function (spreadsheet) {
+    return spreadsheet.query('select *')
+  })
+  .then(function (result) {
+    console.log(result)
+  })
