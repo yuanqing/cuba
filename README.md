@@ -24,6 +24,7 @@ Returns a Promise for a Cuba instance.
 
 Returns a Promise for an array containing the results of executing the specified `query` on the spreadsheet.
 
+- `query` is a [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage#overview) query. Defaults to `'select *'`.
 - `options` is an optional object literal.
 
     Key | Description | Default
