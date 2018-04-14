@@ -9,6 +9,9 @@ class GoogleApiClient {
   }
 
   async renewAccessToken () {
+    if (this.clientEmail === null) {
+      return
+    }
     if (
       this.accessTokenExpiry == null ||
       this.accessTokenExpiry < +new Date()
@@ -42,7 +45,7 @@ class GoogleApiClient {
 
 async function googleApiClient (serviceAccountKey) {
   if (serviceAccountKey == null) {
-    return new GoogleApiClient()
+    return new GoogleApiClient(null, null)
   }
   const googleApiClient = new GoogleApiClient(
     serviceAccountKey.client_email,
