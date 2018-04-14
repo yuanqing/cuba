@@ -43,9 +43,7 @@ $ cuba 'select *' --id 1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU
 
 ## Configuration
 
-Some initial set up is required before we can start querying our spreadsheet using Cuba.
-
-There are two ways to go about this:
+Some initial set up is required before we can start querying our spreadsheet using Cuba. There are two ways to go about this:
 
 ### Method 1 &mdash; Enable link sharing on the spreadsheet
 
