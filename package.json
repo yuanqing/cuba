@@ -31,7 +31,7 @@
     "fix": "prettier-standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "lint": "standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "start": "src/cli.js 'select *' --id 1jarTHL5x2r-YOY4y7fdUWfMyW419xhz031PKrnZpHJo --key example/key.json",
-    "test": "ava test"
+    "test": "ava 'test/**/*.js'"
   },
   "files": [
     "src"
