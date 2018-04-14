@@ -13,16 +13,16 @@ Usage: cuba [query] [options]
 
 Query:
   The Google Visualization API Query Language query to run on the
-  Google Sheet spreadsheet. Defaults to 'select *'.
+  Google Sheets spreadsheet. Defaults to 'select *'.
 
 Options:
   -h, --help  Print this message.
-  -i, --id <id>  A Google Sheet spreadsheet ID.
-  -k, --key <path>  Path to a service account key JSON file, for
-                    querying private spreadsheets.
-  -s, --sheetId <sheetId>  Sheet ID of the sheet to run the query
-                           on. Defaults to '0'.
-  -n, --sheetName <sheetName>  Sheet name of the sheet to run the
+  -i, --id <id>  A Google Sheets spreadsheet ID.
+  -k, --key <path>  Path to a service account key JSON file, if
+                    running the query on a private spreadsheet.
+  -s, --sheetId <sheetId>  ID of the sheet to run the query on.
+                           Defaults to '0'.
+  -n, --sheetName <sheetName>  Name of the sheet to run the
                                query on.
   -v, --version  Print the version number.
 `

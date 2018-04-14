@@ -5,30 +5,30 @@ const parse = require('./parse')
 const selectAllQuery = 'select *'
 
 class Cuba {
-  constructor (id, googleApiClient) {
-    this.id = id
+  constructor (spreadsheetId, googleApiClient) {
+    this.spreadsheetId = spreadsheetId
     this.googleApiClient = googleApiClient
   }
 
   async query (query, options) {
-    const url = buildUrl(this.id, query || selectAllQuery, options)
+    const url = buildUrl(this.spreadsheetId, query || selectAllQuery, options)
     const json = await this.googleApiClient.request(url)
     return parse(json.table)
   }
 
   async queryStream (query, options) {
-    const url = buildUrl(this.id, query || selectAllQuery, options)
+    const url = buildUrl(this.spreadsheetId, query || selectAllQuery, options)
     const jsonStream = await this.googleApiClient.requestStream(url)
     return jsonStream.pipe(parse.stream())
   }
 }
 
-async function createCuba (id, serviceAccountKey) {
-  if (id == null) {
-    throw new Error('Need an ID')
+async function createCuba (spreadsheetId, serviceAccountKey) {
+  if (spreadsheetId == null) {
+    throw new Error('Need a spreadsheet ID')
   }
   const googleApiClient = await createGoogleApiClient(serviceAccountKey)
-  return new Cuba(id, googleApiClient)
+  return new Cuba(spreadsheetId, googleApiClient)
 }
 
 module.exports = createCuba
