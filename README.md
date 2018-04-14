@@ -2,12 +2,12 @@
 
 > Stream data out of Google Sheets.
 
-- Run [SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against a [Google Sheets](https://docs.google.com/spreadsheets/u/0/?tgif=d) spreadsheet
+- Effortlessly run [SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against a [Google Sheets](https://docs.google.com/spreadsheets/u/0/?tgif=d) spreadsheet
 - Perfect for prototyping or for leveraging Google Sheets as a collaborative datastore
 
 ## Usage
 
-Given [a particular Google Sheets spreadsheet,](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing) we can get data out of it using [the API:](#api)
+Given [a particular Google Sheets spreadsheet,](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing) we can get data out of it with [the API:](#api)
 
 ```js
 const cuba = require('cuba')
@@ -21,7 +21,7 @@ cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU8')
   })
 ```
 
-&hellip;or, equivalently, using [the CLI:](#cli)
+&hellip;or with [the CLI:](#cli)
 
 ```
 $ cuba 'select *' --id 1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU
@@ -43,7 +43,7 @@ $ cuba 'select *' --id 1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU
 
 ## Configuration
 
-Some initial set up is required before we can start querying our spreadsheet using Cuba. There are two ways to go about this:
+Some initial set up is needed before we can start querying our spreadsheet using Cuba. There are two ways to go about this:
 
 ### Method 1 &mdash; Enable link sharing on the spreadsheet
 
@@ -104,8 +104,8 @@ const cuba = require('cuba')
 
 Returns a Promise for a Cuba instance.
 
-- [`spreadsheetId`](https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id) is a string representing the Google Sheets spreadsheet to be queried. This is the value between `/d/` and `/edit` in the spreadsheet URL.
-- [`serviceAccountCredentials`](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#overview) is an optional object literal, for running queries on private spreadsheets.
+- `spreadsheetId` is a string representing the Google Sheets spreadsheet to be queried. This is the value between `/d/` and `/edit` in the spreadsheet URL.
+- `serviceAccountCredentials` is an optional object literal, for running queries on private spreadsheets.
 
     Key | Description | Default
     :-|:-|:-
@@ -155,16 +155,16 @@ Options:
 
 ## Installation
 
-Install via [npm](https://npmjs.com):
-
-```sh
-$ npm install --save cuba
-```
-
-Or [yarn](https://yarnpkg.com):
+Install via [yarn](https://yarnpkg.com):
 
 ```sh
 $ yarn add cuba
+```
+
+Or [npm](https://npmjs.com):
+
+```sh
+$ npm install --save cuba
 ```
 
 ## License
