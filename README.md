@@ -1,6 +1,6 @@
 # cuba [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) ![Stability Experimental](http://img.shields.io/badge/stability-experimental-red.svg?style=flat)
 
-> Stream data out your Google Sheets spreadsheet.
+> Stream data out of Google Sheets.
 
 - Run [Google Visualization API Query Language queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against a Google Sheets spreadsheet
 - Perfect for prototyping or for leveraging Google Sheets as a collaborative datastore
