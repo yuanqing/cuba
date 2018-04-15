@@ -18,12 +18,12 @@ Query:
 Options:
   -h, --help  Print this message.
   -i, --id <id>  The Google Sheets spreadsheet ID. This is the value
-                 between \`/d/\` and \`/edit\` in the spreadsheet URL.
-  -c, --credentials <path>  Path to the service account credentials
-                            JSON file, if running the query on a
-                            spreadsheet with link sharing disabled.
+                 between `/d/` and `/edit` in the spreadsheet URL.
+  -c, --credentials <path>  Path to the Service Account credentials
+                            JSON file. This is only needed when link
+                            sharing is not enabled on the spreadsheet.
   -s, --sheetId <sheetId>  ID of the sheet to run the query on. This
-                           is the value after \`#gid=\` in the
+                           is the value after `#gid=` in the
                            spreadsheet URL. Defaults to '0'.
   -n, --sheetName <sheetName>  Name of the sheet to run the
                                query on.
