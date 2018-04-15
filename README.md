@@ -179,14 +179,6 @@ Options:
 
 ---
 
-## Prior art
-
-- [node-google-spreadsheets](https://github.com/theoephraim/node-google-spreadsheet)
-- [Tabletop](https://github.com/jsoma/tabletop)
-- [Sheetrock](https://github.com/chriszarate/sheetrock)
-
----
-
 ## Installation
 
 Install via [yarn](https://yarnpkg.com):
@@ -200,6 +192,14 @@ Or [npm](https://npmjs.com):
 ```sh
 $ npm install --save cuba
 ```
+
+---
+
+## Prior art
+
+- [node-google-spreadsheets](https://github.com/theoephraim/node-google-spreadsheet)
+- [Tabletop](https://github.com/jsoma/tabletop)
+- [Sheetrock](https://github.com/chriszarate/sheetrock)
 
 ---
 
