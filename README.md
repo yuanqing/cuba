@@ -1,9 +1,15 @@
-# cuba [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) ![Stability Experimental](http://img.shields.io/badge/stability-experimental-red.svg?style=flat)
+# cuba [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba)
 
 > Stream JSON out of Google Sheets.
 
 - Run sophisticated SQL-like queries written in [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage#overview) syntax
 - Perfect for prototyping or for leveraging your Google Sheets spreadsheet as a collaborative datastore
+
+<div align="center">
+
+[**Usage**](#usage) &nbsp;&middot;&nbsp; [**Configuration**](#configuration) &nbsp;&middot;&nbsp; [**API**](#api) &nbsp;&middot;&nbsp; [**CLI**](#cli) &nbsp;&middot;&nbsp; [**Installation**](#installation) &nbsp;&middot;&nbsp; [**Prior art**](#prior-art) &nbsp;&middot;&nbsp; [**License**](#license)
+
+</div>
 
 ---
 
@@ -12,7 +18,7 @@
 Given [a particular spreadsheet,](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing) we can stream JSON out of it with [the CLI:](#cli)
 
 ```
-$ cuba 'select *' --id 1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU
+$ npx cuba 'select *' --id 1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU
 [
   {
     "id": 1,
@@ -58,8 +64,6 @@ $ node example/stream.js
 { id: 2, name: 'bar' }
 { id: 3, name: 'baz' }
 ```
-
----
 
 ## Configuration
 
@@ -114,8 +118,6 @@ This is if you do not want to enable link sharing on your spreadsheet.
 </p>
 </details>
 
----
-
 ## API
 
 ```js
@@ -151,8 +153,6 @@ Returns a Promise for an array containing the results of running the specified `
 
 Just like the `query` method, but returns a Promise for a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable).
 
----
-
 ## CLI
 
 ```
@@ -177,8 +177,6 @@ Options:
   -v, --version  Print the version number.
 ```
 
----
-
 ## Installation
 
 Install via [yarn](https://yarnpkg.com):
@@ -193,15 +191,11 @@ Or [npm](https://npmjs.com):
 $ npm install --save cuba
 ```
 
----
-
 ## Prior art
 
 - [node-google-spreadsheets](https://github.com/theoephraim/node-google-spreadsheet)
 - [Tabletop](https://github.com/jsoma/tabletop)
 - [Sheetrock](https://github.com/chriszarate/sheetrock)
-
----
 
 ## License
 
