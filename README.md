@@ -7,7 +7,7 @@
 </div>
 
 - Execute sophisticated SQL-like queries written in [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage#overview) syntax
-- Perfect for prototyping or for using your Google Sheets spreadsheet as a collaborative datastore
+- Perfect for leveraging your Google Sheets spreadsheet as a collaborative datastore
 
 <div align="center">
 
