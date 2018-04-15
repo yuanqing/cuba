@@ -2,11 +2,11 @@
 
 # cuba <br />[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba)
 
-***Stream JSON out of Google Sheets.***
+***Stream JSON out of your Google Sheets spreadsheet.***
 
 </div>
 
-- Run sophisticated SQL-like queries written in [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage#overview) syntax
+- Execute sophisticated SQL-like queries written in [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage#overview) syntax
 - Perfect for prototyping or for using your Google Sheets spreadsheet as a collaborative datastore
 
 <div align="center">
@@ -197,9 +197,9 @@ $ npm install --save cuba
 
 ## Prior art
 
-- [node-google-spreadsheets](https://github.com/theoephraim/node-google-spreadsheet)
 - [Tabletop](https://github.com/jsoma/tabletop)
 - [Sheetrock](https://github.com/chriszarate/sheetrock)
+- [google-spreadsheet](https://github.com/theoephraim/node-google-spreadsheet)
 
 ## License
 
