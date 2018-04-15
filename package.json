@@ -34,5 +34,16 @@
   },
   "files": [
     "src"
+  ],
+  "keywords": [
+    "api",
+    "google",
+    "google-api",
+    "google-sheet",
+    "google-sheets",
+    "google-spreadsheet",
+    "google-spreadsheets",
+    "sheet",
+    "spreadsheet"
   ]
 }
