@@ -1,25 +1,15 @@
 # cuba [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) ![Stability Experimental](http://img.shields.io/badge/stability-experimental-red.svg?style=flat)
 
-> Stream data out of Google Sheets.
+> Stream JSON out of Google Sheets.
 
-- Effortlessly run [SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against a [Google Sheets](https://docs.google.com/spreadsheets/u/0/?tgif=d) spreadsheet
-- Perfect for prototyping or for leveraging Google Sheets as a collaborative datastore
+- Run sophisticated SQL-like queries written in [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage#overview) syntax
+- Perfect for prototyping or for leveraging your Google Sheets spreadsheet as a collaborative datastore
+
+---
 
 ## Usage
 
-Given [a particular Google Sheets spreadsheet,](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing) we can get data out of it with [the API:](#api)
-
-```js
-const cuba = require('cuba')
-
-;(async function () {
-  const spreadsheet = await cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
-  const results = await spreadsheet.query('select *')
-  console.log(results)
-})()
-```
-
-&hellip;or with [the CLI:](#cli)
+Given [a particular spreadsheet,](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing) we can stream JSON out of it with [the CLI:](#cli)
 
 ```
 $ cuba 'select *' --id 1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU
@@ -39,22 +29,54 @@ $ cuba 'select *' --id 1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU
 ]
 ```
 
+&hellip;or with [the API:](#api)
+
+```js
+// example/stream.js
+
+const cuba = require('cuba')
+const Transform = require('stream').Transform
+
+;(async function () {
+  const spreadsheet = await cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
+  const stream = await spreadsheet.queryStream('select *')
+  stream.pipe(
+    new Transform({
+      objectMode: true,
+      transform: function (data, encoding, callback) {
+        console.log(data)
+        callback()
+      }
+    })
+  )
+})()
+```
+
+```
+$ node example/stream.js
+{ id: 1, name: 'foo' }
+{ id: 2, name: 'bar' }
+{ id: 3, name: 'baz' }
+```
+
+---
+
 ## Configuration
 
-Some initial set up is needed before we can start querying our spreadsheet using Cuba. There are two ways to go about this:
+Some quick set up is needed before we can start querying our spreadsheet. There are two methods:
 
-### Method 1 &mdash; Enable link sharing on the spreadsheet
+### Method 1 &mdash; Enable link sharing on your spreadsheet
 
 1. Navigate to your Google Sheets spreadsheet.
-2. Click the blue **`Share`** button on the top-right hand corner of the page.
-3. Click **`Get shareable link`** on the top-right hand corner of the modal.
+2. Click the blue **`Share`** button on the top-right corner of the page.
+3. Click **`Get shareable link`** on the top-right corner of the modal.
 4. To the left of the grey **`Copy link`** button, ensure that access rights is set to **`Anyone with the link can view`**.
 
-And&hellip; we&rsquo;re done! Cuba will work as in [the above Usage example](#usage).
+And&hellip; we&rsquo;re done! Querying will work as in [the above Usage example](#usage).
 
-### Method 2 &mdash; Give a Service Account view access to the spreadsheet
+### Method 2 &mdash; Give a Service Account view access to your spreadsheet
 
-This is if you do not want to enable link sharing on the spreadsheet.
+This is if you do not want to enable link sharing on your spreadsheet.
 
 <details>
 <summary><strong>1. Create a Service Account on the Google API Console.</strong></summary>
@@ -62,7 +84,7 @@ This is if you do not want to enable link sharing on the spreadsheet.
 
 1. Navigate to [the Google API Console](https://console.developers.google.com/apis/dashboard)
 2. Select a project from the drop-down box in the top bar.
-3. Click **`Credentials`** (the Key icon) in the left-hand navigation bar.
+3. Click **`Credentials`** (the Key icon) on the left navigation bar.
 4. Click the blue **`Create credentials`** drop-down box, and select **`Service account key`**.
 5. Click the **`Select…`** drop-down box, and select **`New service account`**.
 6. Enter a **`Service account name`**. For **`Role`**, select **`Project › Viewer`**. For **`Key type`**, select **`JSON`**.
@@ -76,7 +98,7 @@ This is if you do not want to enable link sharing on the spreadsheet.
 <p>
 
 1. Navigate to your spreadsheet.
-2. Click the blue **`Share`** button on the top-right hand corner of the page.
+2. Click the blue **`Share`** button on the top-right corner of the page.
 3. In the **`Enter names or email addresses…`** text box, enter the `client_email` of the Service Account, then click the blue **`Send`** button.
 
 </p>
@@ -92,6 +114,8 @@ This is if you do not want to enable link sharing on the spreadsheet.
 </p>
 </details>
 
+---
+
 ## API
 
 ```js
@@ -103,14 +127,14 @@ const cuba = require('cuba')
 Returns a Promise for a Cuba instance.
 
 - `spreadsheetId` is a string representing the Google Sheets spreadsheet to be queried. This is the value between `/d/` and `/edit` in the spreadsheet URL.
-- `serviceAccountCredentials` is an optional object literal, for running queries on private spreadsheets.
+- `serviceAccountCredentials` is an optional object literal. This is only needed when link sharing is not enabled on the spreadsheet.
 
     Key | Description | Default
     :-|:-|:-
-    `clientEmail` | Email address of the service account that has view access to the spreadsheet being queried. | `undefined`
-    `privateKey` | Private key. | `undefined`
+    `clientEmail` | Email address of the Service Account that has view access to the spreadsheet being queried. | `undefined`
+    `privateKey` | Private key of the Service Account. | `undefined`
 
-### const string = await spreadsheet.query([query, options])
+### const array = await spreadsheet.query([query, options])
 
 Returns a Promise for an array containing the results of running the specified `query` on the spreadsheet.
 
@@ -127,6 +151,8 @@ Returns a Promise for an array containing the results of running the specified `
 
 Just like the `query` method, but returns a Promise for a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable).
 
+---
+
 ## CLI
 
 ```
@@ -140,9 +166,9 @@ Options:
   -h, --help  Print this message.
   -i, --id <id>  The Google Sheets spreadsheet ID. This is the value
                  between `/d/` and `/edit` in the spreadsheet URL.
-  -c, --credentials <path>  Path to the service account credentials
-                            JSON file, if running the query on a
-                            spreadsheet with link sharing disabled.
+  -c, --credentials <path>  Path to the Service Account credentials
+                            JSON file. This is only needed when link
+                            sharing is not enabled on the spreadsheet.
   -s, --sheetId <sheetId>  ID of the sheet to run the query on. This
                            is the value after `#gid=` in the
                            spreadsheet URL. Defaults to '0'.
@@ -150,6 +176,8 @@ Options:
                                query on.
   -v, --version  Print the version number.
 ```
+
+---
 
 ## Installation
 
@@ -164,6 +192,8 @@ Or [npm](https://npmjs.com):
 ```sh
 $ npm install --save cuba
 ```
+
+---
 
 ## License
 
