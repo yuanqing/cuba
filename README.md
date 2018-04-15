@@ -42,9 +42,7 @@ $ npx cuba 'select *' --id 1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU
 &hellip;or with [the API:](#api)
 
 ```js
-// example/stream.js
-
-const cuba = require('..')
+const cuba = require('cuba')
 const Transform = require('stream').Transform
 
 async function main () {
