@@ -2,7 +2,7 @@ const buildUrl = require('./build-url')
 const createGoogleApiClient = require('./google-api-client')
 const parse = require('./parse')
 
-const selectAllQuery = 'select *'
+const defaultQuery = 'select *'
 
 function identity (object) {
   return object
@@ -15,13 +15,13 @@ class Cuba {
   }
 
   async query (query, options) {
-    const url = buildUrl(this.spreadsheetId, query || selectAllQuery, options)
+    const url = buildUrl(this.spreadsheetId, query || defaultQuery, options)
     const json = await this.googleApiClient.request(url)
     return parse(json.table, (options && options.transform) || identity)
   }
 
   async queryStream (query, options) {
-    const url = buildUrl(this.spreadsheetId, query || selectAllQuery, options)
+    const url = buildUrl(this.spreadsheetId, query || defaultQuery, options)
     const jsonStream = await this.googleApiClient.requestStream(url)
     return jsonStream.pipe(
       parse.stream((options && options.transform) || identity)

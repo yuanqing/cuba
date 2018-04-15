@@ -1,5 +1,5 @@
-const request = require('./request')
 const getAccessToken = require('./get-access-token')
+const request = require('./request')
 const sanitiseResponse = require('./sanitise-response')
 
 class GoogleApiClient {
