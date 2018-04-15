@@ -1,9 +1,13 @@
-# cuba [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba)
+<div align="center">
 
-> Stream JSON out of Google Sheets.
+# cuba <br />[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba)
+
+***Stream JSON out of Google Sheets.***
+
+</div>
 
 - Run sophisticated SQL-like queries written in [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage#overview) syntax
-- Perfect for prototyping or for leveraging your Google Sheets spreadsheet as a collaborative datastore
+- Perfect for prototyping or for using your Google Sheets spreadsheet as a collaborative datastore
 
 <div align="center">
 
