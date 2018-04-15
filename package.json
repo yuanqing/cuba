@@ -1,7 +1,7 @@
 {
   "name": "cuba",
   "version": "0.0.1",
-  "description": "Stream data out of Google Sheets.",
+  "description": "Stream JSON out of Google Sheets.",
   "main": "src",
   "author": "Lim Yuan Qing",
   "license": "MIT",
@@ -30,7 +30,6 @@
     "coverage": "yarn clean && nyc --reporter=html --reporter=lcov --reporter=text npm test",
     "fix": "prettier-standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "lint": "standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
-    "start": "src/cli.js 'select *' --id 1jarTHL5x2r-YOY4y7fdUWfMyW419xhz031PKrnZpHJo --key example/key.json",
     "test": "ava 'test/**/*.js'"
   },
   "files": [
