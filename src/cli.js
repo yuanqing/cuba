@@ -16,12 +16,13 @@ Query:
   Google Sheets spreadsheet. Defaults to 'select *'.
 
 Options:
-  -h, --help  Print this message.
-  -i, --id <id>  The Google Sheets spreadsheet ID. This is the value
-                 between \`/d/\` and \`/edit\` in the spreadsheet URL.
   -c, --credentials <path>  Path to the Service Account credentials
                             JSON file. This is only needed when link
                             sharing is not enabled on the spreadsheet.
+  -h, --help  Print this message.
+  -i, --id <spreadsheetId>  The Google Sheets spreadsheet ID. This is
+                            the value between \`/d/\` and \`/edit\`
+                            in the spreadsheet URL.
   -s, --sheetId <sheetId>  ID of the sheet to run the query on. This
                            is the value after \`#gid=\` in the
                            spreadsheet URL. Defaults to '0'.
