@@ -69,6 +69,8 @@ $ node example/stream.js
 { id: 3, name: 'baz' }
 ```
 
+With the API, we can also do `const array = await spreadsheet.query('select *')` to get an array of results.
+
 ## Configuration
 
 Some quick set up is needed before we can start querying our spreadsheet. There are two methods:
@@ -140,9 +142,9 @@ Returns a Promise for a Cuba instance.
     `clientEmail` | Email address of the Service Account that has view access to the spreadsheet being queried. | `undefined`
     `privateKey` | Private key of the Service Account. | `undefined`
 
-### const array = await spreadsheet.query([query, options])
+### const stream = await spreadsheet.queryStream([query, options])
 
-Returns a Promise for an array containing the results of running the specified `query` on the spreadsheet.
+Returns a Promise for a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) containing the results of running the `query` on the spreadsheet.
 
 - `query` is a [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage#overview) query. Defaults to `'select *'`.
 - `options` is an optional object literal.
@@ -153,9 +155,9 @@ Returns a Promise for an array containing the results of running the specified `
     `sheetName` | Name of the sheet to run the query on. | `undefined`
     `transform` | A function for transforming each item in the result. | The identity function
 
-### const stream = await spreadsheet.queryStream([query, options])
+### const array = await spreadsheet.query([query, options])
 
-Just like the `query` method, but returns a Promise for a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable).
+Just like the `queryStream` method, but returns a Promise for an array instead.
 
 ## CLI
 
