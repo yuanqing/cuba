@@ -3,7 +3,7 @@ const fs = require('fs')
 const test = require('tape')
 const cuba = require('..')
 
-function getServiceAccountCredentials() {
+function getServiceAccountCredentials () {
   if (process.env.CI) {
     return {
       clientEmail: process.env.CLIENT_EMAIL,
