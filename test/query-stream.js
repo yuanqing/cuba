@@ -1,6 +1,6 @@
-const cuba = require('..')
 const concat = require('concat-stream')
 const test = require('tape')
+const cuba = require('..')
 
 const id = '1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU'
 

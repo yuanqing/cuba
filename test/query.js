@@ -1,5 +1,5 @@
-const cuba = require('..')
 const test = require('tape')
+const cuba = require('..')
 
 const id = '1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU'
 

@@ -1,5 +1,5 @@
-const cuba = require('..')
 const test = require('tape')
+const cuba = require('..')
 
 test('throws if no `id` specified', async function (t) {
   t.plan(1)
