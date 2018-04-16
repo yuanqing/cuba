@@ -3,7 +3,7 @@
 const nopt = require('nopt')
 const path = require('path')
 
-const cuba = require('./api')
+const cuba = require('.')
 const prettyPrintJson = require('./src/pretty-print-json')
 const version = require('./package.json').version
 
@@ -68,7 +68,8 @@ const query = options.argv.remain[0]
 const id = options.id
 const serviceAccountCredentials =
   options.key && require(path.join(process.cwd(), options.key))
-;(async function () {
+
+async function main () {
   try {
     const database = await cuba(id, serviceAccountCredentials)
     const stream = await database.queryStream(query)
@@ -76,4 +77,5 @@ const serviceAccountCredentials =
   } catch (error) {
     logError(error)
   }
-})()
+}
+main()
