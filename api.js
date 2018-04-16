@@ -1,6 +1,6 @@
-const buildUrl = require('./build-url')
-const createGoogleApiClient = require('./google-api-client')
-const parse = require('./parse')
+const buildUrl = require('./src/build-url')
+const createGoogleApiClient = require('./src/google-api-client')
+const parse = require('./src/parse')
 
 const defaultQuery = 'select *'
 

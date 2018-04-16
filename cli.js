@@ -3,9 +3,9 @@
 const nopt = require('nopt')
 const path = require('path')
 
-const cuba = require('..')
-const prettyPrintJson = require('./pretty-print-json')
-const version = require('../package.json').version
+const cuba = require('./api')
+const prettyPrintJson = require('./src/pretty-print-json')
+const version = require('./package.json').version
 
 const help = `
 Usage: cuba [query] [options]

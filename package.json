@@ -2,7 +2,7 @@
   "name": "cuba",
   "version": "0.0.2",
   "description": "Stream JSON out of your Google Sheets spreadsheet.",
-  "main": "src",
+  "main": "api.js",
   "author": "Lim Yuan Qing",
   "license": "MIT",
   "repository": {
@@ -10,7 +10,7 @@
     "url": "git://github.com/yuanqing/cuba.git"
   },
   "bin": {
-    "cuba": "src/cli.js"
+    "cuba": "cli.js"
   },
   "dependencies": {
     "JSONStream": "^1.3.2",
@@ -29,8 +29,8 @@
   "scripts": {
     "clean": "rimraf '*.log' .nyc_output coverage",
     "coverage": "yarn clean && nyc --reporter=html --reporter=lcov --reporter=text npm test",
-    "fix": "prettier-standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
-    "lint": "standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
+    "fix": "prettier-standard '*.js' 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
+    "lint": "standard '*.js' 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "test": "ava 'test/**/*.js'"
   },
   "files": [
