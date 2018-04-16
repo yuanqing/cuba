@@ -20,18 +20,19 @@
     "nopt": "^4.0.1"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
+    "concat-stream": "^1.6.2",
     "nyc": "^11.6.0",
     "prettier-standard": "^8.0.1",
     "rimraf": "^2.6.2",
-    "standard": "^11.0.1"
+    "standard": "^11.0.1",
+    "tape": "^4.9.0"
   },
   "scripts": {
     "clean": "rimraf '*.log' .nyc_output coverage",
     "coverage": "yarn clean && nyc --reporter=html --reporter=lcov --reporter=text npm test",
     "fix": "prettier-standard '*.js' 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "lint": "standard '*.js' 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
-    "test": "ava 'test/**/*.js'"
+    "test": "tape 'test/**/*.js'"
   },
   "files": [
     "src"
