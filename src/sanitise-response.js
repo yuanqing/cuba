@@ -10,13 +10,13 @@ function sanitiseResponseStream () {
   let isFirstChunk = true
   return new Transform({
     transform (chunk, encoding, callback) {
-      const string = chunk.toString()
+      const response = chunk.toString()
       if (isFirstChunk) {
         isFirstChunk = false
-        callback(null, string.replace(responsePrefixJunkRegex, ''))
+        callback(null, sanitiseResponse(response))
         return
       }
-      callback(null, string)
+      callback(null, response)
     }
   })
 }
