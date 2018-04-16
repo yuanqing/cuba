@@ -38,9 +38,7 @@ function parseStream (transform) {
     schema = parseColumns(data.cols)
   })
   parseRowStream.on('data', function (data) {
-    if (schema) {
-      readableStream.push(parseRow(schema, data, transform))
-    }
+    readableStream.push(parseRow(schema, data, transform))
   })
   parseRowStream.on('end', function () {
     readableStream.push(null)
