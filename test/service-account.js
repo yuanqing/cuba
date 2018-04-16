@@ -1,5 +1,6 @@
 const concat = require('concat-stream')
 const fs = require('fs')
+const path = require('path')
 const test = require('tape')
 const cuba = require('..')
 
@@ -10,8 +11,8 @@ function getServiceAccountCredentials () {
       privateKey: process.env.PRIVATE_KEY
     }
   }
-  const serviceAccountCredentialsPath = '../service-account-credentials.json'
-  if (fs.existsSync(serviceAccountCredentialsPath)) {
+  const serviceAccountCredentialsPath = path.resolve(__dirname, '..', 'service-account-credentials.json')
+  if (fs.existsSync()) {
     return require(serviceAccountCredentialsPath)
   }
   return null
