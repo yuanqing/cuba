@@ -30,10 +30,17 @@ function parseStream (transform) {
   const parseRowStream = parseJson('table.rows.*.c')
   let schema = null
   parseRowStream.on('header', function (data) {
+    if (data.cols == null) {
+      readableStream.emit('error')
+      readableStream.push(null)
+      return
+    }
     schema = parseColumns(data.cols)
   })
   parseRowStream.on('data', function (data) {
-    readableStream.push(parseRow(schema, data, transform))
+    if (schema) {
+      readableStream.push(parseRow(schema, data, transform))
+    }
   })
   parseRowStream.on('end', function () {
     readableStream.push(null)

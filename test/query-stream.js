@@ -25,11 +25,10 @@ test('throws if the query is invalid', async function (t) {
   t.plan(1)
   const spreadsheet = await cuba(id)
   const query = 'qux'
-  try {
-    await spreadsheet.queryStream(query, options)
-  } catch (error) {
+  const stream = await spreadsheet.queryStream(query)
+  stream.on('error', function () {
     t.pass()
-  }
+  })
 })
 
 test('runs the query on the sheet with the specified sheet name', async function (t) {

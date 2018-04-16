@@ -21,9 +21,9 @@ test('throws if the query is invalid', async function (t) {
   const spreadsheet = await cuba(id)
   const query = 'qux'
   try {
-    await spreadsheet.query(query, options)
+    await spreadsheet.query(query)
   } catch (error) {
-    t.pass()
+    t.true(/^Error: Invalid query/.test(error.toString()))
   }
 })
 
