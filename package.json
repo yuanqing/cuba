@@ -23,10 +23,11 @@
     "ava": "^0.25.0",
     "nyc": "^11.6.0",
     "prettier-standard": "^8.0.1",
+    "rimraf": "^2.6.2",
     "standard": "^11.0.1"
   },
   "scripts": {
-    "clean": "rm -rf .nyc_output coverage *.log",
+    "clean": "rimraf '*.log' .nyc_output coverage",
     "coverage": "yarn clean && nyc --reporter=html --reporter=lcov --reporter=text npm test",
     "fix": "prettier-standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "lint": "standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
