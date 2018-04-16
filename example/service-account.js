@@ -1,7 +1,8 @@
 const cuba = require('..')
-const serviceAccountCredentials = require('./service-account-credentials.json')
 const Transform = require('stream').Transform
-;(async function () {
+const serviceAccountCredentials = require('./service-account-credentials.json')
+
+async function main () {
   const spreadsheet = await cuba(
     '1ZlDwhcOm0dE23mtRvbmSZNn3i6eKgHHrfwHHK0xH-fM',
     serviceAccountCredentials
@@ -16,4 +17,5 @@ const Transform = require('stream').Transform
       }
     })
   )
-})()
+}
+main()
