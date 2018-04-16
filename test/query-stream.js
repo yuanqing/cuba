@@ -14,9 +14,11 @@ test('runs a query, defaulting to the first sheet', async function (t) {
     { id: 2, name: 'bar' },
     { id: 3, name: 'baz' }
   ]
-  stream.pipe(concat(function(actual) {
-    t.deepEqual(actual, expected)
-  }))
+  stream.pipe(
+    concat(function (actual) {
+      t.deepEqual(actual, expected)
+    })
+  )
 })
 
 test('throws if the query is invalid', async function (t) {
@@ -37,9 +39,11 @@ test('runs the query on the sheet with the specified sheet name', async function
   const options = { sheetName: 'Sheet2' }
   const stream = await spreadsheet.queryStream(query, options)
   const expected = [{ A: 1, B: 42 }, { A: 2, B: 3142 }]
-  stream.pipe(concat(function(actual) {
-    t.deepEqual(actual, expected)
-  }))
+  stream.pipe(
+    concat(function (actual) {
+      t.deepEqual(actual, expected)
+    })
+  )
 })
 
 test('runs the query on the sheet with the specified sheet ID', async function (t) {
@@ -49,7 +53,9 @@ test('runs the query on the sheet with the specified sheet ID', async function (
   const options = { sheetId: '224335590' }
   const stream = await spreadsheet.queryStream(query, options)
   const expected = [{ id: 1, sum: 31 }, { id: 2, sum: 4215 }, { id: 3, sum: 1 }]
-  stream.pipe(concat(function(actual) {
-    t.deepEqual(actual, expected)
-  }))
+  stream.pipe(
+    concat(function (actual) {
+      t.deepEqual(actual, expected)
+    })
+  )
 })
