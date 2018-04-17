@@ -4,25 +4,24 @@ const path = require('path')
 const test = require('tape')
 const cuba = require('..')
 
+const id = '1ZlDwhcOm0dE23mtRvbmSZNn3i6eKgHHrfwHHK0xH-fM'
+
 function getServiceAccountCredentials () {
-  if (process.env.CI) {
+  if (process.env.CLIENT_EMAIL && process.env.PRIVATE_KEY) {
     return {
       clientEmail: process.env.CLIENT_EMAIL,
       privateKey: process.env.PRIVATE_KEY
     }
   }
   const serviceAccountCredentialsPath = path.resolve(__dirname, '..', 'service-account-credentials.json')
-  if (fs.existsSync()) {
+  if (fs.existsSync(serviceAccountCredentialsPath)) {
     return require(serviceAccountCredentialsPath)
   }
   return null
 }
-
 const serviceAccountCredentials = getServiceAccountCredentials()
 
 if (serviceAccountCredentials) {
-  const id = '1ZlDwhcOm0dE23mtRvbmSZNn3i6eKgHHrfwHHK0xH-fM'
-
   test('runs a query on a spreadsheet via a Service Account', async function (t) {
     t.plan(1)
     const database = await cuba(id, serviceAccountCredentials)
