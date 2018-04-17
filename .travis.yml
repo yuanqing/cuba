@@ -8,7 +8,7 @@ node_js:
 
 script:
   - yarn lint
-  - yarn test && yarn coverage
+  - yarn coverage
 
 after_success:
   - yarn add --dev coveralls
