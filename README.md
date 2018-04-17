@@ -6,7 +6,7 @@
 
 </div>
 
-- Run sophisticated [SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) on your spreadsheet
+- Run sophisticated [SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) on your spreadsheet, get results as JSON via a streaming interface
 - Perfect for leveraging Google Sheets as a collaborative datastore
 
 <div align="center">
