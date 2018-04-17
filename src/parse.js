@@ -10,7 +10,7 @@ function parseColumns (columns) {
 
 function parseRow (schema, row, transform) {
   return row.reduce(function (result, cell, index) {
-    result[schema[index]] = transform(cell ? cell.v : null)
+    result[schema[index]] = transform(cell.v)
     return result
   }, {})
 }
