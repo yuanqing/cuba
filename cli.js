@@ -71,8 +71,8 @@ const serviceAccountCredentials =
 
 async function main () {
   try {
-    const database = await cuba(id, serviceAccountCredentials)
-    const stream = await database.queryStream(query)
+    const spreadsheet = await cuba(id, serviceAccountCredentials)
+    const stream = await spreadsheet.queryStream(query)
     stream.pipe(prettyPrintJson()).pipe(process.stdout)
   } catch (error) {
     logError(error)

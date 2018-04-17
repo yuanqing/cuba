@@ -24,9 +24,9 @@ const serviceAccountCredentials = getServiceAccountCredentials()
 if (serviceAccountCredentials) {
   test('runs a query on a spreadsheet via a Service Account', async function (t) {
     t.plan(1)
-    const database = await cuba(id, serviceAccountCredentials)
+    const spreadsheet = await cuba(id, serviceAccountCredentials)
     const query = 'select *'
-    const stream = await database.queryStream(query)
+    const stream = await spreadsheet.queryStream(query)
     const expected = [
       { id: 1, name: 'qux' },
       { id: 2, name: 'quux' },

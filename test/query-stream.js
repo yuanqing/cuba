@@ -6,9 +6,9 @@ const id = '1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU'
 
 test('runs a query, defaulting to the first sheet', async function (t) {
   t.plan(1)
-  const database = await cuba(id)
+  const spreadsheet = await cuba(id)
   const query = 'select *'
-  const stream = await database.queryStream(query)
+  const stream = await spreadsheet.queryStream(query)
   const expected = [
     { id: 1, name: 'foo' },
     { id: 2, name: 'bar' },
