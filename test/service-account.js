@@ -13,7 +13,11 @@ function getServiceAccountCredentials () {
       privateKey: process.env.PRIVATE_KEY
     }
   }
-  const serviceAccountCredentialsPath = path.resolve(__dirname, '..', 'service-account-credentials.json')
+  const serviceAccountCredentialsPath = path.resolve(
+    __dirname,
+    '..',
+    'service-account-credentials.json'
+  )
   if (fs.existsSync(serviceAccountCredentialsPath)) {
     return require(serviceAccountCredentialsPath)
   }
@@ -25,6 +29,26 @@ if (serviceAccountCredentials) {
   test('runs a query on a spreadsheet via a Service Account', async function (t) {
     t.plan(1)
     const spreadsheet = await cuba(id, serviceAccountCredentials)
+    const query = 'select *'
+    const stream = await spreadsheet.queryStream(query)
+    const expected = [
+      { id: 1, name: 'qux' },
+      { id: 2, name: 'quux' },
+      { id: 3, name: 'quuux' }
+    ]
+    stream.pipe(
+      concat(function (actual) {
+        t.deepEqual(actual, expected)
+      })
+    )
+  })
+
+  test('allows the Service Account credentials to be specified using `camel_case` keys', async function (t) {
+    t.plan(1)
+    const spreadsheet = await cuba(id, {
+      client_email: serviceAccountCredentials.clientEmail,
+      private_key: serviceAccountCredentials.privateKey
+    })
     const query = 'select *'
     const stream = await spreadsheet.queryStream(query)
     const expected = [
