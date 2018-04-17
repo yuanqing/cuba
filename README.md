@@ -1,12 +1,12 @@
 <div align="center">
 
-# cuba <br />[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/cuba.svg?style=flat)](https://coveralls.io/r/yuanqing/cuba)
+# cuba <br />[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/cuba.svg?style=flat)](https://coveralls.io/r/yuanqing/cuba) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ***Stream JSON out of your Google Sheets spreadsheet.***
 
 </div>
 
-- Run sophisticated SQL-like queries on your spreadsheet with [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage#overview)
+- Run sophisticated [SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) on your spreadsheet
 - Perfect for leveraging Google Sheets as a collaborative datastore
 
 <div align="center">
