@@ -1,4 +1,4 @@
-const cuba = require('..').queryStream
+const cuba = require('..').stream
 const concat = require('concat-stream')
 const test = require('tape')
 
@@ -15,8 +15,8 @@ test('throws if no `id` specified', async function (t) {
 
 test('runs a query, defaulting to the first sheet', async function (t) {
   t.plan(1)
-  const queryStream = await cuba(id)
-  const stream = await queryStream('select *')
+  const query = await cuba(id)
+  const stream = await query('select *')
   const expected = [
     { id: 1, name: 'foo' },
     { id: 2, name: 'bar' },
@@ -31,8 +31,8 @@ test('runs a query, defaulting to the first sheet', async function (t) {
 
 test('throws if the query is invalid', async function (t) {
   t.plan(1)
-  const queryStream = await cuba(id)
-  const stream = await queryStream('qux')
+  const query = await cuba(id)
+  const stream = await query('qux')
   stream.on('error', function () {
     t.pass()
   })
@@ -40,8 +40,8 @@ test('throws if the query is invalid', async function (t) {
 
 test('runs the query on the sheet with the specified sheet name', async function (t) {
   t.plan(1)
-  const queryStream = await cuba(id)
-  const stream = await queryStream('select *', { sheetName: 'Sheet2' })
+  const query = await cuba(id)
+  const stream = await query('select *', { sheetName: 'Sheet2' })
   const expected = [{ A: 1, B: 42 }, { A: 2, B: 3142 }]
   stream.pipe(
     concat(function (actual) {
@@ -52,8 +52,8 @@ test('runs the query on the sheet with the specified sheet name', async function
 
 test('runs the query on the sheet with the specified sheet ID', async function (t) {
   t.plan(1)
-  const queryStream = await cuba(id)
-  const stream = await queryStream('select *', { sheetId: '224335590' })
+  const query = await cuba(id)
+  const stream = await query('select *', { sheetId: '224335590' })
   const expected = [{ id: 1, sum: 31 }, { id: 2, sum: 4215 }, { id: 3, sum: 1 }]
   stream.pipe(
     concat(function (actual) {

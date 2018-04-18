@@ -1,4 +1,4 @@
-const cuba = require('..').queryStream
+const cuba = require('..').stream
 const concat = require('concat-stream')
 const fs = require('fs')
 const path = require('path')
@@ -28,8 +28,8 @@ const serviceAccountCredentials = getServiceAccountCredentials()
 if (serviceAccountCredentials) {
   test('runs a query on a spreadsheet via a Service Account', async function (t) {
     t.plan(1)
-    const queryStream = await cuba(id, serviceAccountCredentials)
-    const stream = await queryStream('select *')
+    const query = await cuba(id, serviceAccountCredentials)
+    const stream = await query('select *')
     const expected = [
       { id: 1, name: 'qux' },
       { id: 2, name: 'quux' },
@@ -44,11 +44,11 @@ if (serviceAccountCredentials) {
 
   test('allows the Service Account credentials to be specified using `camel_case` keys', async function (t) {
     t.plan(1)
-    const queryStream = await cuba(id, {
+    const query = await cuba(id, {
       client_email: serviceAccountCredentials.clientEmail,
       private_key: serviceAccountCredentials.privateKey
     })
-    const stream = await queryStream('select *')
+    const stream = await query('select *')
     const expected = [
       { id: 1, name: 'qux' },
       { id: 2, name: 'quux' },

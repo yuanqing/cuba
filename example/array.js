@@ -1,4 +1,4 @@
-const cuba = require('..').query
+const cuba = require('..').array
 
 async function main () {
   const query = await cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')

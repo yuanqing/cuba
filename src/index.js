@@ -1,4 +1,4 @@
 module.exports = {
-  query: require('./array'),
-  queryStream: require('./stream')
+  array: require('./array'),
+  stream: require('./stream')
 }

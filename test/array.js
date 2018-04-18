@@ -1,4 +1,4 @@
-const cuba = require('..').query
+const cuba = require('..').array
 const test = require('tape')
 
 const id = '1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU'
