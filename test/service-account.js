@@ -1,8 +1,8 @@
+const cuba = require('..').queryStream
 const concat = require('concat-stream')
 const fs = require('fs')
 const path = require('path')
 const test = require('tape')
-const cuba = require('../src/stream')
 
 const id = '1ZlDwhcOm0dE23mtRvbmSZNn3i6eKgHHrfwHHK0xH-fM'
 
