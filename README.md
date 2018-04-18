@@ -127,9 +127,9 @@ This is if you do not want to enable link sharing on your spreadsheet.
 const cuba = require('cuba')
 ```
 
-### const spreadsheet = await cuba(spreadsheetId [, serviceAccountCredentials])
+### const queryStream = await cuba.stream(spreadsheetId [, serviceAccountCredentials])
 
-Returns a Promise for a Cuba instance.
+`cuba.stream` returns a Promise for a function that, in turn, returns a Promise for a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable).
 
 - `spreadsheetId` is a string representing the Google Sheets spreadsheet to be queried. This is the value between `/d/` and `/edit` in the spreadsheet URL.
 - `serviceAccountCredentials` is an optional object literal. This is only needed when link sharing is not enabled on the spreadsheet.
@@ -139,9 +139,9 @@ Returns a Promise for a Cuba instance.
     `clientEmail` | Email address of the Service Account that has view access to the spreadsheet being queried. | `undefined`
     `privateKey` | Private key of the Service Account. | `undefined`
 
-### const stream = await spreadsheet.queryStream([query, options])
+### const stream = await queryStream([query, options])
 
-Returns a Promise for a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) containing the results of running the `query` on the spreadsheet.
+`queryStream` returns a Promise for a Readable Stream containing the results of running the `query` on the spreadsheet.
 
 - `query` is a [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage#overview) query. Defaults to `'select *'`.
 - `options` is an optional object literal.
@@ -152,9 +152,13 @@ Returns a Promise for a [Readable Stream](https://nodejs.org/api/stream.html#str
     `sheetName` | Name of the sheet to run the query on. | `undefined`
     `transform` | A function for transforming each item in the result. | The identity function
 
-### const array = await spreadsheet.query([query, options])
+### const queryArray = await cuba.array(spreadsheetId [, serviceAccountCredentials])
 
-Just like the `queryStream` method, but returns a Promise for an array instead.
+Just like `cuba.stream`, but returns a Promise for a function that, in turn, returns a Promise for an array.
+
+### const array = await queryArray([query, options])
+
+Just like `queryStream`, but returns a Promise for an array.
 
 ## CLI
 
