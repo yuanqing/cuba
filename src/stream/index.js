@@ -9,7 +9,7 @@ module.exports = async function (spreadsheetId, serviceAccountCredentials) {
   if (spreadsheetId == null) {
     throw new Error('Need a spreadsheet ID')
   }
-  const request = googleApiClient(serviceAccountCredentials || {})
+  const request = googleApiClient(serviceAccountCredentials)
   return async function (query, options) {
     const url = buildUrl(spreadsheetId, query || defaultQuery, options)
     const jsonStream = await request(url)
