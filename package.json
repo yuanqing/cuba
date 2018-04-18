@@ -10,7 +10,7 @@
     "url": "git://github.com/yuanqing/cuba.git"
   },
   "bin": {
-    "cuba": "cli.js"
+    "cuba": "src/cli.js"
   },
   "dependencies": {
     "JSONStream": "^1.3.2",
