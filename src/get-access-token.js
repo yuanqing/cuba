@@ -29,7 +29,12 @@ function createSignedJwt (clientEmail, privateKey) {
   })
 }
 
+let cachedAccessToken = {}
+
 module.exports = async function (clientEmail, privateKey) {
+  if (cachedAccessToken.expiry > new Date().getTime()) {
+    return cachedAccessToken
+  }
   const assertion = createSignedJwt(clientEmail, privateKey)
   const response = await fetch(authURI, {
     method: 'POST',
@@ -40,8 +45,10 @@ module.exports = async function (clientEmail, privateKey) {
   })
   const text = await response.text()
   const json = JSON.parse(text)
-  return {
+  const accessToken = {
     accessToken: json.access_token,
     expiry: json.expires_in
   }
+  cachedAccessToken = accessToken
+  return accessToken.accessToken
 }

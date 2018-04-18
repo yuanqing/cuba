@@ -1,5 +1,5 @@
 const Transform = require('stream').Transform
-const sanitiseResponse = require('./sanitise-response')
+const sanitiseResponse = require('../array/sanitise-response')
 
 module.exports = function () {
   let isFirstChunk = true

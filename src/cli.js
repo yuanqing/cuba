@@ -3,7 +3,7 @@
 const nopt = require('nopt')
 const path = require('path')
 
-const cuba = require('./query-stream')
+const cuba = require('./stream')
 const prettyPrintJson = require('./pretty-print-json')
 const version = require('../package.json').version
 

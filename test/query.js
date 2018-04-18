@@ -1,7 +1,16 @@
 const test = require('tape')
-const cuba = require('../src/query')
+const cuba = require('..').query
 
 const id = '1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU'
+
+test('throws if no `id` specified', async function (t) {
+  t.plan(1)
+  try {
+    await cuba()
+  } catch (error) {
+    t.pass()
+  }
+})
 
 test('runs a query, defaulting to the first sheet', async function (t) {
   t.plan(1)

@@ -1,5 +1,5 @@
-const parseColumns = require('./parse-columns')
-const parseRow = require('./parse-row')
+const parseColumns = require('../parse-columns')
+const parseRow = require('../parse-row')
 
 module.exports = function (table, transform) {
   const schema = parseColumns(table.cols)

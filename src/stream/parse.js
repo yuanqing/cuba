@@ -2,8 +2,8 @@ const duplexer = require('duplexer')
 const parseJson = require('JSONStream').parse
 const Readable = require('stream').Readable
 
-const parseColumns = require('./parse-columns')
-const parseRow = require('./parse-row')
+const parseColumns = require('../parse-columns')
+const parseRow = require('../parse-row')
 
 module.exports = function (transform) {
   const readableStream = new Readable({
