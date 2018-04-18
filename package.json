@@ -30,8 +30,8 @@
   "scripts": {
     "clean": "rimraf '*.log' .nyc_output coverage",
     "coverage": "yarn clean && nyc --reporter=html --reporter=lcov --reporter=text npm test",
-    "fix": "prettier-standard '*.js' 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
-    "lint": "standard '*.js' 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
+    "fix": "prettier-standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
+    "lint": "standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "test": "tape 'test/**/*.js'"
   },
   "files": [
