@@ -42,12 +42,12 @@ $ npx cuba 'select *' --id 1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU
 &hellip;or with [the API:](#api)
 
 ```js
-const cuba = require('cuba')
+const cuba = require('cuba').stream
 const Transform = require('stream').Transform
 
 async function main () {
-  const spreadsheet = await cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
-  const stream = await spreadsheet.queryStream('select *')
+  const query = await cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
+  const stream = await query('select *')
   stream.pipe(
     new Transform({
       objectMode: true,
@@ -67,8 +67,6 @@ $ node example/stream.js
 { id: 2, name: 'bar' }
 { id: 3, name: 'baz' }
 ```
-
-With the API, we can also do `const array = await spreadsheet.query('select *')` to get an array of results.
 
 ## Configuration
 
