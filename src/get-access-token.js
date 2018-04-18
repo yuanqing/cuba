@@ -3,7 +3,7 @@ const sign = require('jws').sign
 
 const scope = 'https://spreadsheets.google.com/feeds'
 const authURI = 'https://www.googleapis.com/oauth2/v4/token'
-function createJwtClaimSet(clientEmail) {
+function createJwtClaimSet (clientEmail) {
   const iat = Math.floor(new Date().getTime() / 1000)
   const exp = iat + 3600 // 3600 seconds = 1 hour
   return {
@@ -15,7 +15,7 @@ function createJwtClaimSet(clientEmail) {
   }
 }
 
-function createSignedJwt(clientEmail, privateKey) {
+function createSignedJwt (clientEmail, privateKey) {
   return sign({
     header: {
       alg: 'RS256'
@@ -25,7 +25,9 @@ function createSignedJwt(clientEmail, privateKey) {
   })
 }
 
-const grantType = encodeURIComponent('urn:ietf:params:oauth:grant-type:jwt-bearer')
+const grantType = encodeURIComponent(
+  'urn:ietf:params:oauth:grant-type:jwt-bearer'
+)
 
 async function getAccessToken (clientEmail, privateKey) {
   const assertion = createSignedJwt(clientEmail, privateKey)
