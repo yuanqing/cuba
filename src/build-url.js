@@ -1,4 +1,4 @@
-function buildUrl (id, query, options) {
+module.exports = function (id, query, options) {
   options = options || {}
   const url = `https://docs.google.com/a/google.com/spreadsheets/d/${id}/gviz/tq?tq=${encodeURIComponent(
     query
@@ -8,5 +8,3 @@ function buildUrl (id, query, options) {
   }
   return `${url}&gid=${options.sheetId || '0'}`
 }
-
-module.exports = buildUrl

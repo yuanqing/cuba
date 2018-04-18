@@ -3,9 +3,9 @@
 const nopt = require('nopt')
 const path = require('path')
 
-const cuba = require('.')
-const prettyPrintJson = require('./src/pretty-print-json')
-const version = require('./package.json').version
+const cuba = require('./query-stream')
+const prettyPrintJson = require('./pretty-print-json')
+const version = require('../package.json').version
 
 const help = `
 Usage: cuba [query] [options]
@@ -71,8 +71,8 @@ const serviceAccountCredentials =
 
 async function main () {
   try {
-    const spreadsheet = await cuba(id, serviceAccountCredentials)
-    const stream = await spreadsheet.queryStream(query)
+    const queryStream = await cuba(id, serviceAccountCredentials)
+    const stream = await queryStream(query)
     stream.pipe(prettyPrintJson()).pipe(process.stdout)
   } catch (error) {
     logError(error)

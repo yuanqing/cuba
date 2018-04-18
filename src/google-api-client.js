@@ -1,6 +1,7 @@
 const getAccessToken = require('./get-access-token')
 const request = require('./request')
 const sanitiseResponse = require('./sanitise-response')
+const sanitiseResponseStream = require('./sanitise-response-stream')
 
 class GoogleApiClient {
   constructor (clientEmail, privateKey) {
@@ -14,14 +15,14 @@ class GoogleApiClient {
     }
     if (
       this.accessTokenExpiry == null ||
-      this.accessTokenExpiry < +new Date()
+      this.accessTokenExpiry < new Date().getTime()
     ) {
       const accessToken = await getAccessToken(
         this.clientEmail,
         this.privateKey
       )
       this.accessToken = accessToken.accessToken
-      this.accessTokenExpiry = accessToken.accessTokenExpiry
+      this.accessTokenExpiry = accessToken.expiry
     }
   }
 
@@ -39,11 +40,11 @@ class GoogleApiClient {
   async requestStream (url) {
     await this.renewAccessToken()
     const response = await request(url, this.accessToken)
-    return response.body.pipe(sanitiseResponse.stream())
+    return response.body.pipe(sanitiseResponseStream())
   }
 }
 
-async function googleApiClient (serviceAccountCredentials) {
+async function createGoogleApiClient (serviceAccountCredentials) {
   if (serviceAccountCredentials == null) {
     return new GoogleApiClient(null, null)
   }
@@ -57,4 +58,4 @@ async function googleApiClient (serviceAccountCredentials) {
   return googleApiClient
 }
 
-module.exports = googleApiClient
+module.exports = createGoogleApiClient

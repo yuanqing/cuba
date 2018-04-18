@@ -1,14 +1,14 @@
 const concat = require('concat-stream')
 const test = require('tape')
-const cuba = require('..')
+const cuba = require('../src/query-stream')
 
 const id = '1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU'
 
 test('runs a query, defaulting to the first sheet', async function (t) {
   t.plan(1)
-  const spreadsheet = await cuba(id)
+  const queryStream = await cuba(id)
   const query = 'select *'
-  const stream = await spreadsheet.queryStream(query)
+  const stream = await queryStream(query)
   const expected = [
     { id: 1, name: 'foo' },
     { id: 2, name: 'bar' },
@@ -23,9 +23,9 @@ test('runs a query, defaulting to the first sheet', async function (t) {
 
 test('throws if the query is invalid', async function (t) {
   t.plan(1)
-  const spreadsheet = await cuba(id)
+  const queryStream = await cuba(id)
   const query = 'qux'
-  const stream = await spreadsheet.queryStream(query)
+  const stream = await queryStream(query)
   stream.on('error', function () {
     t.pass()
   })
@@ -33,10 +33,10 @@ test('throws if the query is invalid', async function (t) {
 
 test('runs the query on the sheet with the specified sheet name', async function (t) {
   t.plan(1)
-  const spreadsheet = await cuba(id)
+  const queryStream = await cuba(id)
   const query = 'select *'
   const options = { sheetName: 'Sheet2' }
-  const stream = await spreadsheet.queryStream(query, options)
+  const stream = await queryStream(query, options)
   const expected = [{ A: 1, B: 42 }, { A: 2, B: 3142 }]
   stream.pipe(
     concat(function (actual) {
@@ -47,10 +47,10 @@ test('runs the query on the sheet with the specified sheet name', async function
 
 test('runs the query on the sheet with the specified sheet ID', async function (t) {
   t.plan(1)
-  const spreadsheet = await cuba(id)
+  const queryStream = await cuba(id)
   const query = 'select *'
   const options = { sheetId: '224335590' }
-  const stream = await spreadsheet.queryStream(query, options)
+  const stream = await queryStream(query, options)
   const expected = [{ id: 1, sum: 31 }, { id: 2, sum: 4215 }, { id: 3, sum: 1 }]
   stream.pipe(
     concat(function (actual) {

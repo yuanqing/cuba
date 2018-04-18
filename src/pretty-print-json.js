@@ -2,7 +2,7 @@ const Transform = require('stream').Transform
 
 const newlineRegex = /\r?\n/g
 
-function prettyPrintJson () {
+module.exports = function () {
   let isFirstChunk = true
   const stream = new Transform({
     objectMode: true,
@@ -24,5 +24,3 @@ function prettyPrintJson () {
   })
   return stream
 }
-
-module.exports = prettyPrintJson

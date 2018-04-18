@@ -1,8 +1,12 @@
 const fetch = require('isomorphic-unfetch')
-const sign = require('jws').sign
+const sign = require('jws/lib/sign-stream').sign
 
-const scope = 'https://spreadsheets.google.com/feeds'
 const authURI = 'https://www.googleapis.com/oauth2/v4/token'
+const grantType = encodeURIComponent(
+  'urn:ietf:params:oauth:grant-type:jwt-bearer'
+)
+const scope = 'https://spreadsheets.google.com/feeds'
+
 function createJwtClaimSet (clientEmail) {
   const iat = Math.floor(new Date().getTime() / 1000)
   const exp = iat + 3600 // 3600 seconds = 1 hour
@@ -25,11 +29,7 @@ function createSignedJwt (clientEmail, privateKey) {
   })
 }
 
-const grantType = encodeURIComponent(
-  'urn:ietf:params:oauth:grant-type:jwt-bearer'
-)
-
-async function getAccessToken (clientEmail, privateKey) {
+module.exports = async function (clientEmail, privateKey) {
   const assertion = createSignedJwt(clientEmail, privateKey)
   const response = await fetch(authURI, {
     method: 'POST',
@@ -42,8 +42,6 @@ async function getAccessToken (clientEmail, privateKey) {
   const json = JSON.parse(text)
   return {
     accessToken: json.access_token,
-    accessTokenExpiry: json.expires_in
+    expiry: json.expires_in
   }
 }
-
-module.exports = getAccessToken

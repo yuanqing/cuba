@@ -1,6 +1,6 @@
 const fetch = require('isomorphic-unfetch')
 
-async function request (url, accessToken) {
+module.exports = async function (url, accessToken) {
   const headers = {
     'X-DataSource-Auth': 'true'
   }
@@ -12,5 +12,3 @@ async function request (url, accessToken) {
     headers
   })
 }
-
-module.exports = request
