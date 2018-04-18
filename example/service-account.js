@@ -1,13 +1,13 @@
-const cuba = require('..')
+const cuba = require('..').queryStream
 const Transform = require('stream').Transform
 const serviceAccountCredentials = require('../service-account-credentials.json')
 
 async function main () {
-  const spreadsheet = await cuba(
+  const queryStream = await cuba(
     '1ZlDwhcOm0dE23mtRvbmSZNn3i6eKgHHrfwHHK0xH-fM',
     serviceAccountCredentials
   )
-  const stream = await spreadsheet.queryStream('select *')
+  const stream = await queryStream('select *')
   stream.pipe(
     new Transform({
       objectMode: true,
