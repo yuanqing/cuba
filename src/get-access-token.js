@@ -1,20 +1,46 @@
-const JwtClient = require('google-auth-library').JWT
-const promisify = require('util').promisify
+const fetch = require('isomorphic-unfetch')
+const sign = require('jws').sign
 
-const scopes = ['https://spreadsheets.google.com/feeds']
+const scope = 'https://spreadsheets.google.com/feeds'
+const authURI = 'https://www.googleapis.com/oauth2/v4/token'
+function createJwtClaimSet(clientEmail) {
+  const iat = Math.floor(new Date().getTime() / 1000)
+  const exp = iat + 3600 // 3600 seconds = 1 hour
+  return {
+    iss: clientEmail,
+    scope,
+    aud: authURI,
+    exp,
+    iat
+  }
+}
+
+function createSignedJwt(clientEmail, privateKey) {
+  return sign({
+    header: {
+      alg: 'RS256'
+    },
+    payload: createJwtClaimSet(clientEmail),
+    secret: privateKey
+  })
+}
+
+const grantType = encodeURIComponent('urn:ietf:params:oauth:grant-type:jwt-bearer')
 
 async function getAccessToken (clientEmail, privateKey) {
-  // https://github.com/google/google-auth-library-nodejs#using-json-web-tokens
-  const jwtClient = new JwtClient({
-    email: clientEmail,
-    key: privateKey,
-    scopes
+  const assertion = createSignedJwt(clientEmail, privateKey)
+  const response = await fetch(authURI, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: `grant_type=${grantType}&assertion=${assertion}`
   })
-  const authorize = promisify(jwtClient.authorize).bind(jwtClient)
-  const accessToken = await authorize()
+  const text = await response.text()
+  const json = JSON.parse(text)
   return {
-    accessToken: accessToken.access_token,
-    accessTokenExpiry: accessToken.expiry_date
+    accessToken: json.access_token,
+    accessTokenExpiry: json.expires_in
   }
 }
 
