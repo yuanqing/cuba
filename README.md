@@ -6,7 +6,7 @@
 
 </div>
 
-- Run [sophisticated SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) on your spreadsheet
+- Run [sophisticated SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) on your Google Sheets spreadsheet
 - Get results as a readable stream or an array
 - Perfect for leveraging Google Sheets as a collaborative datastore or CMS for your app
 
