@@ -2,7 +2,7 @@
 
 # cuba <br />[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/cuba.svg?style=flat)](https://coveralls.io/r/yuanqing/cuba) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-**Google Sheets + SQL = JSON**
+***Google Sheets + SQL = JSON***
 
 </div>
 
@@ -12,7 +12,7 @@
 
 <div align="center">
 
-[**Usage**](#usage) &nbsp;&middot;&nbsp; [**Configuration**](#configuration) &nbsp;&middot;&nbsp; [**API**](#api) &nbsp;&middot;&nbsp; [**CLI**](#cli) &nbsp;&middot;&nbsp; [**Installation**](#installation) &nbsp;&middot;&nbsp; [**Prior art**](#prior-art) &nbsp;&middot;&nbsp; [**License**](#license)
+[**Usage**](#usage) &nbsp;&middot;&nbsp; [**Configuration**](#configuration) &nbsp;&middot;&nbsp; [**Installation**](#installation) &nbsp;&middot;&nbsp; [**API**](#api) &nbsp;&middot;&nbsp; [**CLI**](#cli) &nbsp;&middot;&nbsp; [**Prior art**](#prior-art) &nbsp;&middot;&nbsp; [**License**](#license)
 
 </div>
 
@@ -69,7 +69,21 @@ $ node example/stream.js
 { id: 3, name: 'baz' }
 ```
 
-You can use `cuba.array` to get results in an array instead of a stream.
+Use `cuba.array` to get the results in an array instead of a readable stream.
+
+## Installation
+
+Install via [yarn](https://yarnpkg.com):
+
+```sh
+$ yarn add cuba
+```
+
+Or [npm](https://npmjs.com):
+
+```sh
+$ npm install --save cuba
+```
 
 ## Configuration
 
@@ -186,20 +200,6 @@ Options:
   -n, --sheetName <sheetName>  Name of the sheet to run the
                                query on.
   -v, --version  Print the version number.
-```
-
-## Installation
-
-Install via [yarn](https://yarnpkg.com):
-
-```sh
-$ yarn add cuba
-```
-
-Or [npm](https://npmjs.com):
-
-```sh
-$ npm install --save cuba
 ```
 
 ## Prior art
