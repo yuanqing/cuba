@@ -32,10 +32,7 @@ test('runs a query, defaulting to the first sheet', async function (t) {
   t.plan(1)
   const query = await cuba.array(publicSpreadsheetId)
   const actual = await query('select * where A > 1')
-  const expected = [
-    { id: 2, name: 'bar' },
-    { id: 3, name: 'baz' }
-  ]
+  const expected = [{ id: 2, name: 'bar' }, { id: 3, name: 'baz' }]
   t.deepEqual(actual, expected)
 })
 
@@ -68,7 +65,10 @@ test('runs the query on the sheet with the specified sheet ID', async function (
 if (serviceAccountCredentials) {
   test('runs a query on a spreadsheet via a Service Account', async function (t) {
     t.plan(1)
-    const query = await cuba.array(privateSpreadsheetId, serviceAccountCredentials)
+    const query = await cuba.array(
+      privateSpreadsheetId,
+      serviceAccountCredentials
+    )
     const actual = await query('select *')
     const expected = [
       { id: 1, name: 'qux' },
