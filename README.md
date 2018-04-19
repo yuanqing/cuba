@@ -12,7 +12,7 @@
 
 <div align="center">
 
-[**Usage**](#usage) &nbsp;&middot;&nbsp; [**Configuration**](#configuration) &nbsp;&middot;&nbsp; [**Installation**](#installation) &nbsp;&middot;&nbsp; [**API**](#api) &nbsp;&middot;&nbsp; [**CLI**](#cli) &nbsp;&middot;&nbsp; [**Prior art**](#prior-art) &nbsp;&middot;&nbsp; [**License**](#license)
+[**Usage**](#usage) &nbsp;&middot;&nbsp; [**Installation**](#installation) &nbsp;&middot;&nbsp; [**Configuration**](#configuration) &nbsp;&middot;&nbsp; [**API**](#api) &nbsp;&middot;&nbsp; [**CLI**](#cli) &nbsp;&middot;&nbsp; [**Prior art**](#prior-art) &nbsp;&middot;&nbsp; [**License**](#license)
 
 </div>
 
