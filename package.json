@@ -1,7 +1,7 @@
 {
   "name": "cuba",
   "version": "0.1.1",
-  "description": "Stream JSON out of your Google Sheets spreadsheet.",
+  "description": "Google Sheets + SQL = JSON",
   "main": "src",
   "author": "Lim Yuan Qing",
   "license": "MIT",
