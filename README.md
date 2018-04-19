@@ -2,12 +2,13 @@
 
 # cuba <br />[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/cuba.svg?style=flat)](https://coveralls.io/r/yuanqing/cuba) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-***Stream JSON out of your Google Sheets spreadsheet.***
+**Google Sheets + SQL = JSON**
 
 </div>
 
-- Run sophisticated [SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) on your spreadsheet, get results as JSON via a streaming interface
-- Perfect for leveraging Google Sheets as a collaborative datastore
+- Run [sophisticated SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) on your spreadsheet
+- Get results as a readable stream or an array
+- Perfect for leveraging Google Sheets as a collaborative datastore or CMS for your app
 
 <div align="center">
 
@@ -42,11 +43,11 @@ $ npx cuba 'select *' --id 1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU
 &hellip;or with [the API:](#api)
 
 ```js
-const cuba = require('cuba').stream
+const cuba = require('cuba')
 const Transform = require('stream').Transform
 
 async function main () {
-  const query = await cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
+  const query = await cuba.stream('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
   const stream = await query('select *')
   stream.pipe(
     new Transform({
@@ -68,9 +69,11 @@ $ node example/stream.js
 { id: 3, name: 'baz' }
 ```
 
+You can use `cuba.array` to get results in an array instead of a stream.
+
 ## Configuration
 
-Some quick set up is needed before we can start querying our spreadsheet. There are two methods:
+Some quick set up is needed before we can start querying our spreadsheet. There are two ways to go about this:
 
 ### Method 1 &mdash; Enable link sharing on your spreadsheet
 
