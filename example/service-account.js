@@ -1,9 +1,9 @@
-const cuba = require('..').stream
+const cuba = require('..')
 const Transform = require('stream').Transform
 const serviceAccountCredentials = require('../service-account-credentials.json')
 
 async function main () {
-  const query = await cuba(
+  const query = await cuba.stream(
     '1ZlDwhcOm0dE23mtRvbmSZNn3i6eKgHHrfwHHK0xH-fM',
     serviceAccountCredentials
   )
