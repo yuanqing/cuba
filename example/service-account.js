@@ -1,4 +1,4 @@
-const cuba = require('..')
+const cuba = require('../src')
 const Transform = require('stream').Transform
 const serviceAccountCredentials = require('../service-account-credentials.json')
 

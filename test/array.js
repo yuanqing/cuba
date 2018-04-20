@@ -1,6 +1,6 @@
 const test = require('tape')
 
-const cuba = require('..')
+const cuba = require('../src')
 const getServiceAccountCredentials = require('./utils/get-service-account-credentials')
 
 const publicSpreadsheetId = '1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU'
