@@ -7,7 +7,7 @@
 </div>
 
 - Run [sophisticated SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) on your Google Sheets spreadsheet
-- Get results as a readable stream or an array
+- Get results as an array or stream
 - Perfect for leveraging Google Sheets as a collaborative datastore or CMS for your app
 
 <div align="center">
@@ -20,56 +20,25 @@
 
 ## Usage
 
-Given [a particular spreadsheet,](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing) we can stream JSON out of it with [the CLI:](#cli)
-
-```
-$ npx cuba 'select *' --id 1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU
-[
-  {
-    "id": 1,
-    "name": "foo"
-  },
-  {
-    "id": 2,
-    "name": "bar"
-  },
-  {
-    "id": 3,
-    "name": "baz"
-  }
-]
-```
-
-&hellip;or with [the API:](#api)
+> [**Editable demo (CodePen)**](https://codepen.io/lyuanqing/pen/xjGMbE)
 
 ```js
+// example/array.js
+
 const cuba = require('cuba')
-const Transform = require('stream').Transform
 
 async function main () {
-  const query = await cuba.stream('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
-  const stream = await query('select *')
-  stream.pipe(
-    new Transform({
-      objectMode: true,
-      transform: function (data, encoding, callback) {
-        console.log(data)
-        callback()
-      }
-    })
-  )
+  const query = await cuba.array('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
+  const array = await query('select *')
+  console.log(array)
+  //=> { id: 1, name: 'foo' }
+  //=> { id: 2, name: 'bar' }
+  //=> { id: 3, name: 'baz' }
 }
 main()
 ```
 
-```
-$ node example/stream.js
-{ id: 1, name: 'foo' }
-{ id: 2, name: 'bar' }
-{ id: 3, name: 'baz' }
-```
-
-Use `cuba.array` to get the results in an array instead of a readable stream.
+Use `cuba.stream` to get the results in a stream instead of an array.
 
 ## Installation
 
