@@ -20,8 +20,6 @@
 
 ## Usage
 
-> [**Editable demo (CodePen)**](https://codepen.io/lyuanqing/pen/xjGMbE)
-
 ```js
 // example/array.js
 
