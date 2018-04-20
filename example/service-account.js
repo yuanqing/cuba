@@ -13,6 +13,9 @@ async function main () {
       objectMode: true,
       transform: function (data, encoding, callback) {
         console.log(data)
+        //=> { id: 1, name: 'qux' }
+        //=> { id: 2, name: 'quux' }
+        //=> { id: 3, name: 'quuux' }
         callback()
       }
     })
