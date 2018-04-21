@@ -1,24 +1,20 @@
-<div align="center">
+![Cuba](media/header.png)
 
-# cuba <br />[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/cuba.svg?style=flat)](https://coveralls.io/r/yuanqing/cuba) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+<p align="center">***Google Sheets + SQL = JSON***</p>
 
-***Google Sheets + SQL = JSON***
+<p align="center">[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/cuba.svg?style=flat)](https://coveralls.io/r/yuanqing/cuba) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)</p>
 
-</div>
-
-- Run [sophisticated SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) on your Google Sheets spreadsheet
+- Run [sophisticated SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet
 - Get results as an array or stream
 - Perfect for leveraging Google Sheets as a collaborative datastore or CMS for your app
 
-<div align="center">
-
-[**Usage**](#usage) &nbsp;&middot;&nbsp; [**Installation**](#installation) &nbsp;&middot;&nbsp; [**Configuration**](#configuration) &nbsp;&middot;&nbsp; [**API**](#api) &nbsp;&middot;&nbsp; [**CLI**](#cli) &nbsp;&middot;&nbsp; [**Prior art**](#prior-art) &nbsp;&middot;&nbsp; [**License**](#license)
-
-</div>
+<p align="center">[**Usage**](#usage) &nbsp;&middot;&nbsp; [**Installation**](#installation) &nbsp;&middot;&nbsp; [**Configuration**](#configuration) &nbsp;&middot;&nbsp; [**API**](#api) &nbsp;&middot;&nbsp; [**CLI**](#cli) &nbsp;&middot;&nbsp; [**Prior art**](#prior-art) &nbsp;&middot;&nbsp; [**License**](#license)</p>
 
 ---
 
 ## Usage
+
+Given [a particular spreadsheet,](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing):
 
 ```js
 // example/array.js
