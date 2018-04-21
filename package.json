@@ -20,6 +20,7 @@
     "nopt": "^4.0.1"
   },
   "devDependencies": {
+    "browserify": "^16.2.0",
     "concat-stream": "^1.6.2",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.4",
@@ -27,13 +28,15 @@
     "prettier-standard": "^8.0.1",
     "rimraf": "^2.6.2",
     "standard": "^11.0.1",
-    "tape": "^4.9.0"
+    "tape": "^4.9.0",
+    "uglify-es": "^3.3.9"
   },
   "scripts": {
-    "clean": "rimraf '*.log' .nyc_output coverage",
+    "build": "rimraf umd.js && browserify src/index.js --standalone cuba | uglifyjs --compress --mangle --toplevel > umd.js",
+    "clean": "rimraf '*.log' .nyc_output coverage umd.js",
     "coverage": "rimraf .nyc_output coverage && nyc --reporter=html --reporter=lcov --reporter=text npm test",
-    "fix": "prettier-standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
-    "lint": "standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
+    "fix": "prettier-standard '*.js' 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
+    "lint": "standard '*.js' 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "precommit": "lint-staged",
     "test": "tape 'test/*.js'"
   },
@@ -44,7 +47,8 @@
     ]
   },
   "files": [
-    "src"
+    "src",
+    "umd.js"
   ],
   "keywords": [
     "api",
@@ -56,5 +60,6 @@
     "google-spreadsheets",
     "sheet",
     "spreadsheet"
-  ]
+  ],
+  "unpkg": "umd.js"
 }

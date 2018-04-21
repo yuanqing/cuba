@@ -4,3 +4,4 @@
 .nyc_output
 *.log
 service-account-credentials.json
+umd.js
