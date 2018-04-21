@@ -10,7 +10,7 @@
 
 - Run [sophisticated SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet
 - Get results as an array or stream
-- Perfect for leveraging Google Sheets as a collaborative datastore or CMS for your app
+- Perfect for prototyping, or leveraging Google Sheets as a collaborative datastore or CMS for your app
 
 <div align="center">
 
@@ -22,7 +22,7 @@
 
 ## Usage
 
-Given [a particular spreadsheet,](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing):
+Given [a particular spreadsheet](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing), just do:
 
 ```js
 // example/array.js
