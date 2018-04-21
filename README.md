@@ -33,9 +33,11 @@ async function main () {
   const query = await cuba.array('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
   const array = await query('select *')
   console.log(array)
-  //=> { id: 1, name: 'foo' }
-  //=> { id: 2, name: 'bar' }
-  //=> { id: 3, name: 'baz' }
+  //=> [
+  //=>   { id: 1, name: 'foo' },
+  //=>   { id: 2, name: 'bar' },
+  //=>   { id: 3, name: 'baz' }
+  //=> ]
 }
 main()
 ```
@@ -101,8 +103,8 @@ This is if you do not want to enable link sharing on your spreadsheet.
 <summary><strong>3. Pass in the Service Account credentials when querying the spreadsheet with Cuba.</strong></summary>
 <p>
 
-- With the API, pass in a `serviceAccountCredentials` object, specifying the `clientEmail` and `privateKey`.
-- With the CLI, use the `--credentials` (or `-c`) flag to specify the path to the Service Account credentials JSON file.
+- With [the API](#const-querystream--await-cubastreamspreadsheetid--serviceaccountcredentials), pass in a `serviceAccountCredentials` object, specifying the `clientEmail` and `privateKey`.
+- With [the CLI](#cli), use the `--credentials` (or `-c`) flag to specify the path to the Service Account credentials JSON file.
 
 </p>
 </details>
