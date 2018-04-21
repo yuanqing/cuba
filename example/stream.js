@@ -1,4 +1,4 @@
-const cuba = require('../src')
+const cuba = require('..')
 const Transform = require('stream').Transform
 
 async function main () {
