@@ -4,7 +4,7 @@
 
 ***Google Sheets + SQL = JSON***
 
-[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/cuba.svg?style=flat)](https://coveralls.io/r/yuanqing/cuba) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 </div>
 
@@ -22,11 +22,11 @@
 
 ## Usage
 
-Given [a particular spreadsheet](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing), just do:
+> [**Editable demo (CodePen)**](https://codepen.io/lyuanqing/pen/bMdXgY)
+
+First, [enable link-sharing](#method-1--enable-link-sharing-on-your-spreadsheet) on your [spreadsheet](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing). Then, do:
 
 ```js
-// example/array.js
-
 const cuba = require('cuba')
 
 async function main () {
@@ -39,8 +39,6 @@ async function main () {
 }
 main()
 ```
-
-Use `cuba.stream` to get the results in a stream instead of an array.
 
 ## Installation
 
