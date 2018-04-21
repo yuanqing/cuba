@@ -29,7 +29,7 @@
   },
   "scripts": {
     "clean": "rimraf '*.log' .nyc_output coverage",
-    "coverage": "yarn clean && nyc --reporter=html --reporter=lcov --reporter=text npm test",
+    "coverage": "rimraf .nyc_output coverage && nyc --reporter=html --reporter=lcov --reporter=text npm test",
     "fix": "prettier-standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "lint": "standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "test": "tape 'test/*.js'"
