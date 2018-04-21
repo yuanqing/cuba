@@ -50,6 +50,7 @@
     "src",
     "umd.js"
   ],
+  "unpkg": "umd.js",
   "keywords": [
     "api",
     "google",
@@ -60,6 +61,5 @@
     "google-spreadsheets",
     "sheet",
     "spreadsheet"
-  ],
-  "unpkg": "umd.js"
+  ]
 }
