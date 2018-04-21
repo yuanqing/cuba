@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "concat-stream": "^1.6.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.4",
     "nyc": "^11.6.0",
     "prettier-standard": "^8.0.1",
     "rimraf": "^2.6.2",
@@ -32,7 +34,14 @@
     "coverage": "rimraf .nyc_output coverage && nyc --reporter=html --reporter=lcov --reporter=text npm test",
     "fix": "prettier-standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "lint": "standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
+    "precommit": "lint-staged",
     "test": "tape 'test/*.js'"
+  },
+  "lint-staged": {
+    "*.js": [
+      "standard",
+      "git add"
+    ]
   },
   "files": [
     "src"
