@@ -1,14 +1,22 @@
 ![Cuba](media/header.png)
 
-<p align="center">***Google Sheets + SQL = JSON***</p>
+<div align="center">
 
-<p align="center">[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/cuba.svg?style=flat)](https://coveralls.io/r/yuanqing/cuba) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)</p>
+***Google Sheets + SQL = JSON***
+
+[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/cuba.svg?style=flat)](https://coveralls.io/r/yuanqing/cuba) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+</div>
 
 - Run [sophisticated SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet
 - Get results as an array or stream
 - Perfect for leveraging Google Sheets as a collaborative datastore or CMS for your app
 
-<p align="center">[**Usage**](#usage) &nbsp;&middot;&nbsp; [**Installation**](#installation) &nbsp;&middot;&nbsp; [**Configuration**](#configuration) &nbsp;&middot;&nbsp; [**API**](#api) &nbsp;&middot;&nbsp; [**CLI**](#cli) &nbsp;&middot;&nbsp; [**Prior art**](#prior-art) &nbsp;&middot;&nbsp; [**License**](#license)</p>
+<div align="center">
+
+[**Usage**](#usage) &nbsp;&middot;&nbsp; [**Installation**](#installation) &nbsp;&middot;&nbsp; [**Configuration**](#configuration) &nbsp;&middot;&nbsp; [**API**](#api) &nbsp;&middot;&nbsp; [**CLI**](#cli) &nbsp;&middot;&nbsp; [**Prior art**](#prior-art) &nbsp;&middot;&nbsp; [**License**](#license)
+
+</div>
 
 ---
 
