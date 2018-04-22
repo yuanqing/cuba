@@ -8,7 +8,7 @@
 
 </div>
 
-- Run [sophisticated SQL-like queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet
+- Run [sophisticated SQL-esque queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet
 - Get results as an array or stream
 - Perfect for prototyping, or leveraging Google Sheets as a collaborative datastore or CMS for your app
 
@@ -21,8 +21,6 @@
 ---
 
 ## Usage
-
-> [**Editable demo (CodePen)**](https://codepen.io/lyuanqing/pen/bMdXgY)
 
 First, [enable link-sharing](#method-1--enable-link-sharing-on-your-spreadsheet) on your [spreadsheet](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing). Then, do:
 
@@ -60,7 +58,7 @@ $ npm install --save cuba
 
 Some quick set up is needed before we can start querying our spreadsheet. There are two ways to go about this:
 
-### Method 1 &mdash; Enable link sharing on your spreadsheet
+### Method 1 &mdash; Enable link-sharing on your spreadsheet
 
 1. Navigate to your Google Sheets spreadsheet.
 2. Click the blue **`Share`** button on the top-right corner of the page.
@@ -71,7 +69,7 @@ And&hellip; we&rsquo;re done! Querying will work as in [the above Usage example]
 
 ### Method 2 &mdash; Give a Service Account view access to your spreadsheet
 
-This is if you do not want to enable link sharing on your spreadsheet.
+This is if you do not want to enable link-sharing on your spreadsheet.
 
 <details>
 <summary><strong>1. Create a Service Account on the Google API Console.</strong></summary>
@@ -111,25 +109,25 @@ This is if you do not want to enable link sharing on your spreadsheet.
 
 ## API
 
+### ➥ Array interface
+
 ```js
-const cuba = require('cuba')
+const cuba = require('cuba').array
 ```
 
-### const queryStream = await cuba.stream(spreadsheetId [, serviceAccountCredentials])
-
-`cuba.stream` returns a Promise for a function that, in turn, returns a Promise for a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable).
+#### const query = await cuba(spreadsheetId [, serviceAccountCredentials])
 
 - `spreadsheetId` is a string representing the Google Sheets spreadsheet to be queried. This is the value between `/d/` and `/edit` in the spreadsheet URL.
-- `serviceAccountCredentials` is an optional object literal. This is only needed when link sharing is not enabled on the spreadsheet.
+- `serviceAccountCredentials` is an optional object literal. This is only needed when link-sharing is not enabled on the spreadsheet.
 
     Key | Description | Default
     :-|:-|:-
     `clientEmail` | Email address of the Service Account that has view access to the spreadsheet being queried. | `undefined`
     `privateKey` | Private key of the Service Account. | `undefined`
 
-### const stream = await queryStream([query, options])
+#### const array = await query([query, options])
 
-`queryStream` returns a Promise for a Readable Stream containing the results of running the `query` on the spreadsheet.
+Returns a Promise for an array containing the results of running the `query` on the spreadsheet.
 
 - `query` is a [Google Visualization API Query Language](https://developers.google.com/chart/interactive/docs/querylanguage#overview) query. Defaults to `'select *'`.
 - `options` is an optional object literal.
@@ -140,13 +138,38 @@ const cuba = require('cuba')
     `sheetName` | Name of the sheet to run the query on. | `undefined`
     `transform` | A function for transforming each item in the result. | The identity function
 
-### const queryArray = await cuba.array(spreadsheetId [, serviceAccountCredentials])
+---
 
-Just like `cuba.stream`, but returns a Promise for a function that, in turn, returns a Promise for an array.
+### ➥ Stream interface
 
-### const array = await queryArray([query, options])
+```js
+const cuba = require('cuba').stream
+```
 
-Just like `queryStream`, but returns a Promise for an array.
+#### const query = await cuba(spreadsheetId [, serviceAccountCredentials])
+
+The function signature is identical to [the corresponding function in the array interface](#const-query--await-cubaspreadsheetid--serviceaccountcredentials).
+
+#### const stream = await query([query, options])
+
+The function signature is identical to [the corresponding function in the array interface](#const-array--await-queryquery-options), only that here we get a Promise for a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable), instead of an array.
+
+---
+
+### ➥ Micro edition
+
+Cuba ships with a **1.45 KB gzipped** &ldquo;micro&rdquo; edition that is more palatable for use in the browser. It comes with the following restrictions:
+
+1. Link-sharing must be enabled on the spreadsheet
+2. Results are returned in an array
+
+```js
+const cuba = require('cuba/src/micro')
+```
+
+#### const query = await cuba(spreadsheetId [, query, options])
+
+Returns a Promise for an array containing the results of running the [`query`](#const-array--await-queryquery-options) on the spreadsheet with the given [`spreadsheetId`](#const-query--await-cubaspreadsheetid--serviceaccountcredentials), with the given [`options`](#const-array--await-queryquery-options).
 
 ## CLI
 
