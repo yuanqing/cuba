@@ -22,6 +22,7 @@
   "devDependencies": {
     "browserify": "^16.2.0",
     "concat-stream": "^1.6.2",
+    "gzip-size-cli": "^2.1.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.4",
     "nyc": "^11.6.0",
@@ -38,7 +39,8 @@
     "fix": "prettier-standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "lint": "standard 'example/**/*.js' 'src/**/*.js' 'test/**/*.js'",
     "precommit": "lint-staged",
-    "test": "tape 'test/*.js'"
+    "test": "tape 'test/*.js'",
+    "weight": "browserify src/array/barebones.js --standalone cuba | uglifyjs --compress --mangle --toplevel | gzip-size"
   },
   "lint-staged": {
     "*.js": [

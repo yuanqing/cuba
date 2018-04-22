@@ -1,9 +1,8 @@
 const buildUrl = require('../build-url')
+const defaultQuery = require('../default-query')
 const googleApiClient = require('./google-api-client')
 const identity = require('../identity')
 const parse = require('./parse')
-
-const defaultQuery = 'select *'
 
 module.exports = async function (spreadsheetId, serviceAccountCredentials) {
   if (spreadsheetId == null) {
