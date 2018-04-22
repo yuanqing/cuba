@@ -57,3 +57,12 @@ test('runs the query on the sheet with the specified sheet ID', async function (
   const expected = [{ id: 1, sum: 31 }, { id: 2, sum: 4215 }, { id: 3, sum: 1 }]
   t.deepEqual(actual, expected)
 })
+
+test('handles the arguments correctly when called without `query` but with `options`', async function (t) {
+  t.plan(1)
+  const actual = await cuba(publicSpreadsheetId, {
+    sheetId: '224335590'
+  })
+  const expected = [{ id: 1, sum: 31 }, { id: 2, sum: 4215 }, { id: 3, sum: 1 }]
+  t.deepEqual(actual, expected)
+})

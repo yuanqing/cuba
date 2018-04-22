@@ -9,6 +9,10 @@ module.exports = async function (spreadsheetId, query, options) {
   if (spreadsheetId == null) {
     throw new Error('Need a spreadsheet ID')
   }
+  if (typeof query !== 'string') {
+    options = query
+    query = null
+  }
   const url = buildUrl(spreadsheetId, query || defaultQuery, options)
   const response = await fetch(url)
   const text = sanitiseResponse(await response.text())
