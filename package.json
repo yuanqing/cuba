@@ -2,13 +2,13 @@
   "name": "cuba",
   "version": "0.1.6",
   "description": "Google Sheets + SQL = JSON",
-  "main": "src",
   "author": "Lim Yuan Qing",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/yuanqing/cuba.git"
   },
+  "main": "src",
   "bin": {
     "cuba": "src/cli.js"
   },
