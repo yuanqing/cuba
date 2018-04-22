@@ -156,12 +156,12 @@ The function signature is identical to [the corresponding function in the array 
 
 ---
 
-### ➥ Micro edition
+### ➥ &ldquo;Micro&rdquo; edition
 
 Cuba ships with a **1.45 KB gzipped** &ldquo;micro&rdquo; edition that is more palatable for use in the browser. It comes with the following restrictions:
 
-1. Link-sharing is enabled on the spreadsheet
-2. Results are returned in an array
+1. Link-sharing is enabled on the spreadsheet.
+2. Results are returned in an array.
 
 ```js
 const cuba = require('cuba/src/micro')
