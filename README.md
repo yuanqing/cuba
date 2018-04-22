@@ -160,14 +160,14 @@ The function signature is identical to [the corresponding function in the array 
 
 Cuba ships with a **1.45 KB gzipped** &ldquo;micro&rdquo; edition that is more palatable for use in the browser. It comes with the following restrictions:
 
-1. Link-sharing must be enabled on the spreadsheet
+1. Link-sharing is enabled on the spreadsheet
 2. Results are returned in an array
 
 ```js
 const cuba = require('cuba/src/micro')
 ```
 
-#### const query = await cuba(spreadsheetId [, query, options])
+#### const array = await cuba(spreadsheetId [, query, options])
 
 Returns a Promise for an array containing the results of running the [`query`](#const-array--await-queryquery-options) on the spreadsheet with the given [`spreadsheetId`](#const-query--await-cubaspreadsheetid--serviceaccountcredentials), with the given [`options`](#const-array--await-queryquery-options).
 
