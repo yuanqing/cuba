@@ -27,10 +27,10 @@
 First, [enable link-sharing](#method-1--enable-link-sharing-on-your-spreadsheet) on your [spreadsheet](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing). Then, do:
 
 ```js
-const cuba = require('cuba')
+const cuba = require('cuba').array
 
 async function main () {
-  const query = await cuba.array('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
+  const query = await cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
   const array = await query('select *')
   console.log(array)
   //=> [

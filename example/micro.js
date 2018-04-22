@@ -1,8 +1,7 @@
-const cuba = require('../src/array/barebones.js')
+const cuba = require('../src/micro')
 
 async function main () {
-  const query = await cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
-  const array = await query('select *')
+  const array = await cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU', 'select *')
   console.log(array)
   // => [
   // =>   { id: 1, name: 'foo' },

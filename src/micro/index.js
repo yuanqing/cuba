@@ -2,8 +2,8 @@ const buildUrl = require('../build-url')
 const defaultQuery = require('../default-query')
 const fetch = require('../fetch')
 const identity = require('../identity')
-const parse = require('./parse')
-const sanitiseResponse = require('./sanitise-response')
+const parse = require('../array/parse')
+const sanitiseResponse = require('../array/sanitise-response')
 
 module.exports = async function (spreadsheetId, query, options) {
   if (spreadsheetId == null) {
