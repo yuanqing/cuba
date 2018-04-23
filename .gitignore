@@ -4,4 +4,3 @@
 .env
 .nyc_output
 *.log
-umd.js
