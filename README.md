@@ -4,8 +4,7 @@
 
 ***Google Sheets + SQL = JSON***
 
-[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-yellow.svg)](https://standardjs.com)
-
+[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![Prettier](https://img.shields.io/badge/code_style-prettier-41718c.svg)](https://prettier.io) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-e0c807.svg)](https://standardjs.com)
 </div>
 
 - Run [sophisticated SQL-esque queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet
