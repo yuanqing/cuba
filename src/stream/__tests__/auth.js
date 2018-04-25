@@ -13,7 +13,7 @@ const serviceAccountCredentials = process.env.CLIENT_EMAIL &&
 if (serviceAccountCredentials) {
   test('runs a query on a spreadsheet via a Service Account', async function (t) {
     t.plan(1)
-    const query = await cuba(id, serviceAccountCredentials)
+    const query = cuba(id, serviceAccountCredentials)
     const stream = await query('select *')
     const expected = [
       { id: 1, name: 'qux' },
@@ -29,7 +29,7 @@ if (serviceAccountCredentials) {
 
   test('allows the Service Account credentials to be specified using `camel_case` keys', async function (t) {
     t.plan(1)
-    const query = await cuba(id, {
+    const query = cuba(id, {
       client_email: serviceAccountCredentials.clientEmail,
       private_key: serviceAccountCredentials.privateKey
     })

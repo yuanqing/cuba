@@ -39,7 +39,7 @@ module.exports = async function (serviceAccountCredentials) {
     serviceAccountCredentials.privateKey ||
     serviceAccountCredentials.private_key
 
-  if (accessToken.expiry > new Date().getTime()) {
+  if (accessToken && accessToken.expiry > new Date().getTime()) {
     return accessToken.accessToken
   }
   const assertion = createSignedJwt(clientEmail, privateKey)
