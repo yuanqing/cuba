@@ -7,7 +7,13 @@ module.exports = function (getAccessToken) {
       getAccessToken && serviceAccountCredentials
         ? await getAccessToken(serviceAccountCredentials)
         : null
-    const response = await fetch(url, accessToken)
+    const response = await fetch(
+      url,
+      'GET',
+      accessToken && {
+        Authorization: `Bearer ${accessToken}`
+      }
+    )
     const text = sanitiseResponse(await response.text())
     const json = JSON.parse(text)
     if (json.errors) {

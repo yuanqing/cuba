@@ -1,4 +1,4 @@
-const fetch = require('cross-fetch')
+const fetch = require('./fetch')
 const sign = require('jws/lib/sign-stream').sign
 
 const authURI = 'https://www.googleapis.com/oauth2/v4/token'
@@ -43,13 +43,14 @@ module.exports = async function (serviceAccountCredentials) {
     return accessToken.accessToken
   }
   const assertion = createSignedJwt(clientEmail, privateKey)
-  const response = await fetch(authURI, {
-    method: 'POST',
-    headers: {
+  const response = await fetch(
+    authURI,
+    'POST',
+    {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: `grant_type=${grantType}&assertion=${assertion}`
-  })
+    `grant_type=${grantType}&assertion=${assertion}`
+  )
   const text = await response.text()
   const json = JSON.parse(text)
   accessToken = {
