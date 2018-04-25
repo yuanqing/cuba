@@ -160,7 +160,7 @@ The authentication process when [using a Service Account](#method-2--give-a-serv
 
 To keep your byte footprint small, do:
 1. Enable [link-sharing on your spreadsheet](#method-1--enable-link-sharing-on-your-spreadsheet).
-2. Change your `require` calls to `cuba/src/array` (**1.53 KB** gzipped) and `cuba/src/stream` (**22.8 KB** gzipped). So, for example, we would have `require('cuba/src/array')` instead of `require('cuba').array`.
+2. Change your `require` calls to `cuba/src/array` (**1.14 KB** gzipped) and `cuba/src/stream` (**22.4 KB** gzipped). So, for example, we would have `require('cuba/src/array')` instead of `require('cuba').array`.
 
 ## CLI
 
