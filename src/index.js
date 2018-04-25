@@ -1,4 +1,4 @@
 module.exports = {
-  array: require('./array'),
-  stream: require('./stream')
+  array: require('./array/auth'),
+  stream: require('./stream/auth')
 }
