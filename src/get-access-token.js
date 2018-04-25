@@ -1,4 +1,4 @@
-const fetch = require('isomorphic-unfetch')
+const fetch = require('cross-fetch')
 const sign = require('jws/lib/sign-stream').sign
 
 const authURI = 'https://www.googleapis.com/oauth2/v4/token'
