@@ -5,9 +5,10 @@
 ***Google Sheets + SQL = JSON***
 
 [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![Prettier](https://img.shields.io/badge/code_style-prettier-41718c.svg)](https://prettier.io) [![JavaScript Standard Style](https://img.shields.io/badge/code_style-standard-e0c807.svg)](https://standardjs.com)
+
 </div>
 
-- Run [sophisticated SQL-esque queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet
+- Run [SQL-esque queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet
 - Get results as an array or stream
 - Perfect for prototyping, or leveraging Google Sheets as a collaborative datastore or CMS for your app
 
@@ -41,13 +42,11 @@ main()
 
 ## Installation
 
-Install via [yarn](https://yarnpkg.com):
-
 ```sh
 $ yarn add cuba
 ```
 
-Or [npm](https://npmjs.com):
+Or:
 
 ```sh
 $ npm install --save cuba
@@ -155,20 +154,13 @@ The function signature is identical to [the corresponding function in the array 
 
 ---
 
-### ➥ &ldquo;Micro&rdquo; edition
+### ➥ In-browser use
 
-Cuba ships with a **1.45 KB gzipped** &ldquo;micro&rdquo; edition that is more palatable for use in the browser. It comes with the following restrictions:
+The authentication process when [using a Service Account](#method-2--give-a-service-account-view-access-to-your-spreadsheet) involves the use of Node&rsquo;s [`crypto`](https://nodejs.org/api/crypto.html) library, which will bloat your browser bundle when it is [polyfilled](https://github.com/crypto-browserify/crypto-browserify).
 
-1. Link-sharing is enabled on the spreadsheet.
-2. Results are returned in an array.
-
-```js
-const cuba = require('cuba/src/micro')
-```
-
-#### const array = await cuba(spreadsheetId [, query, options])
-
-Returns a Promise for an array containing the results of running the [`query`](#const-array--await-queryquery-options) on the spreadsheet with the given [`spreadsheetId`](#const-query--await-cubaspreadsheetid--serviceaccountcredentials), with the given [`options`](#const-array--await-queryquery-options).
+To keep your byte footprint small, do:
+1. Enable [link-sharing on your spreadsheet](#method-1--enable-link-sharing-on-your-spreadsheet).
+2. Change your `require` calls to `cuba/src/array` (**1.53 KB** gzipped) and `cuba/src/stream` (**22.8 KB** gzipped). So, for example, we would have `require('cuba/src/array')` instead of `require('cuba').array`.
 
 ## CLI
 
