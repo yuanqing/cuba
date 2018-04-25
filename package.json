@@ -40,7 +40,9 @@
     "lint": "standard 'example/**/*.js' 'src/**/*.js'",
     "precommit": "lint-staged",
     "test": "tape --require dotenv/config 'src/**/__tests__/*.js'",
-    "weight": "browserify src/micro/index.js --standalone cuba | uglifyjs --compress --mangle --toplevel | gzip-size"
+    "weight": "yarn weight-array && yarn weight-stream",
+    "weight-array": "browserify src/array/index.js --standalone cuba | uglifyjs --compress --mangle --toplevel | gzip-size",
+    "weight-stream": "browserify src/stream/index.js --standalone cuba | uglifyjs --compress --mangle --toplevel | gzip-size"
   },
   "lint-staged": {
     "*.js": [

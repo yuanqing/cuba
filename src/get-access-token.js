@@ -31,7 +31,14 @@ function createSignedJwt (clientEmail, privateKey) {
 
 let accessToken = {}
 
-module.exports = async function (clientEmail, privateKey) {
+module.exports = async function (serviceAccountCredentials) {
+  const clientEmail =
+    serviceAccountCredentials.clientEmail ||
+    serviceAccountCredentials.client_email
+  const privateKey =
+    serviceAccountCredentials.privateKey ||
+    serviceAccountCredentials.private_key
+
   if (accessToken.expiry > new Date().getTime()) {
     return accessToken.accessToken
   }
