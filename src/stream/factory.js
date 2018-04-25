@@ -1,7 +1,5 @@
 const buildUrl = require('../build-url')
-const defaultQuery = require('../default-query')
 const googleApiClient = require('./google-api-client')
-const identity = require('../identity')
 const parse = require('./parse')
 
 module.exports = function (getAccessToken) {
@@ -11,9 +9,9 @@ module.exports = function (getAccessToken) {
     }
     const request = googleApiClient(getAccessToken)
     return async function (query, options) {
-      const url = buildUrl(spreadsheetId, query || defaultQuery, options)
+      const url = buildUrl(spreadsheetId, query, options)
       const jsonStream = await request(url, serviceAccountCredentials)
-      return jsonStream.pipe(parse((options && options.transform) || identity))
+      return jsonStream.pipe(parse(options && options.transform))
     }
   }
 }
