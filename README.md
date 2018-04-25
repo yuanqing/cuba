@@ -156,7 +156,7 @@ The function signature is identical to [the corresponding function in the array 
 
 ### ➥ In-browser use
 
-The authentication process when [using a Service Account](#method-2--give-a-service-account-view-access-to-your-spreadsheet) involves the use of Node&rsquo;s [`crypto`](https://nodejs.org/api/crypto.html) library, which will bloat your browser bundle when it is [polyfilled](https://github.com/crypto-browserify/crypto-browserify).
+The authentication process when [using a Service Account](#method-2--give-a-service-account-view-access-to-your-spreadsheet) involves the use of Node&rsquo;s [`crypto`](https://nodejs.org/api/crypto.html) library, which will bloat your browser bundle when it is [shimmed](https://github.com/crypto-browserify/crypto-browserify).
 
 To keep your byte footprint small, do:
 1. Enable [link-sharing on your spreadsheet](#method-1--enable-link-sharing-on-your-spreadsheet).
