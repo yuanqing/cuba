@@ -1,6 +1,6 @@
 {
   "name": "cuba",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Google Sheets + SQL = JSON",
   "author": "Lim Yuan Qing",
   "license": "MIT",
