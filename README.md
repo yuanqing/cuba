@@ -28,7 +28,7 @@ First, [enable link-sharing](#method-1--enable-link-sharing-on-your-spreadsheet)
 const cuba = require('cuba').array
 
 async function main () {
-  const query = await cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
+  const query = cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
   const array = await query('select *')
   console.log(array)
   //=> [
@@ -99,7 +99,7 @@ This is if you do not want to enable link-sharing on your spreadsheet.
 <summary><strong>3. Pass in the Service Account credentials when querying the spreadsheet with Cuba.</strong></summary>
 <p>
 
-- With [the API](#const-querystream--await-cubastreamspreadsheetid--serviceaccountcredentials), pass in a `serviceAccountCredentials` object, specifying the `clientEmail` and `privateKey`.
+- With [the API](#const-querystream--cubastreamspreadsheetid--serviceaccountcredentials), pass in a `serviceAccountCredentials` object, specifying the `clientEmail` and `privateKey`.
 - With [the CLI](#cli), use the `--credentials` (or `-c`) flag to specify the path to the Service Account credentials JSON file.
 
 </p>
@@ -113,7 +113,7 @@ This is if you do not want to enable link-sharing on your spreadsheet.
 const cuba = require('cuba').array
 ```
 
-#### const query = await cuba(spreadsheetId [, serviceAccountCredentials])
+#### const query = cuba(spreadsheetId [, serviceAccountCredentials])
 
 - `spreadsheetId` is a string representing the Google Sheets spreadsheet to be queried. This is the value between `/d/` and `/edit` in the spreadsheet URL.
 - `serviceAccountCredentials` is an optional object literal. This is only needed when link-sharing is not enabled on the spreadsheet.
@@ -144,13 +144,13 @@ Returns a Promise for an array containing the results of running the `query` on 
 const cuba = require('cuba').stream
 ```
 
-#### const query = await cuba(spreadsheetId [, serviceAccountCredentials])
+#### const query = cuba(spreadsheetId [, serviceAccountCredentials])
 
-The function signature is identical to [the corresponding function in the array interface](#const-query--await-cubaspreadsheetid--serviceaccountcredentials).
+The function signature is identical to [the corresponding function in the array interface](#const-query--cubaspreadsheetid--serviceaccountcredentials).
 
 #### const stream = await query([query, options])
 
-The function signature is identical to [the corresponding function in the array interface](#const-array--await-queryquery-options), only that here we get a Promise for a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable), instead of an array.
+The function signature is identical to [the corresponding function in the array interface](#const-array--queryquery-options), only that here we get a Promise for a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable), instead of an array.
 
 ---
 
