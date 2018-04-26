@@ -4,7 +4,7 @@ const fetch =
 module.exports = function (url, method, headers, body) {
   return fetch(url, {
     method,
-    headers,
+    headers: headers || {},
     body
   })
 }
