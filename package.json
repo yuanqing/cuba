@@ -44,9 +44,7 @@
     "test": "yarn test-browser && yarn test-node",
     "test-browser": "browserify --transform localenvify src/array/__tests__/*.js | tape-run",
     "test-node": "tape --require localenv 'src/**/__tests__/*.js'",
-    "weight": "yarn weight-array && yarn weight-stream",
-    "weight-array": "browserify src/array/index.js --standalone cuba | uglifyjs --compress --mangle --toplevel | gzip-size",
-    "weight-stream": "browserify src/stream/index.js --standalone cuba | uglifyjs --compress --mangle --toplevel | gzip-size"
+    "weight": "browserify src/array/index.js --standalone cuba | uglifyjs --compress --mangle --toplevel | gzip-size"
   },
   "lint-staged": {
     "*.js": [
