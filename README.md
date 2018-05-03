@@ -8,8 +8,7 @@
 
 </div>
 
-- Run [SQL-esque queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet
-- Get results as an array or stream
+- Run [SQL-esque queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet, get results as JSON
 - Perfect for prototyping, or leveraging Google Sheets as a collaborative datastore or CMS for your app
 
 <div align="center">
@@ -107,13 +106,11 @@ This is if you do not want to enable link-sharing on your spreadsheet.
 
 ## API
 
-### ➥ Array interface
-
 ```js
-const cuba = require('cuba').array
+const cuba = require('cuba')
 ```
 
-#### const query = cuba(spreadsheetId [, serviceAccountCredentials])
+### const query = cuba(spreadsheetId [, serviceAccountCredentials])
 
 - `spreadsheetId` is a string representing the Google Sheets spreadsheet to be queried. This is the value between `/d/` and `/edit` in the spreadsheet URL.
 - `serviceAccountCredentials` is an optional object literal. This is only needed when link-sharing is not enabled on the spreadsheet.
@@ -123,7 +120,7 @@ const cuba = require('cuba').array
     `clientEmail` | Email address of the Service Account that has view access to the spreadsheet being queried. | `undefined`
     `privateKey` | Private key of the Service Account. | `undefined`
 
-#### const array = await query([query, options])
+### const array = await query([query, options])
 
 Returns a Promise for an array containing the results of running the `query` on the spreadsheet.
 
@@ -138,7 +135,19 @@ Returns a Promise for an array containing the results of running the `query` on 
 
 ---
 
-### ➥ Stream interface
+### In-browser use
+
+To keep your byte footprint small (just **1.14 KB** gzipped), do:
+1. Enable [link-sharing on your spreadsheet](#method-1--enable-link-sharing-on-your-spreadsheet).
+2. Change your `require` calls to `cuba/src/array`. So, for example, we would have `require('cuba/src/array')` instead of `require('cuba')`.
+
+(The authentication process when [using a Service Account](#method-2--give-a-service-account-view-access-to-your-spreadsheet) involves the use of Node&rsquo;s [`crypto`](https://nodejs.org/api/crypto.html) library, which bloats the browser bundle when it is [shimmed](https://github.com/crypto-browserify/crypto-browserify).)
+
+---
+
+### Stream interface
+
+Cuba also ships with a stream interface for use in Node:
 
 ```js
 const cuba = require('cuba').stream
@@ -151,16 +160,6 @@ The function signature is identical to [the corresponding function in the array 
 #### const stream = await query([query, options])
 
 The function signature is identical to [the corresponding function in the array interface](#const-array--queryquery-options), only that here we get a Promise for a [Readable Stream](https://nodejs.org/api/stream.html#stream_class_stream_readable), instead of an array.
-
----
-
-### ➥ In-browser use
-
-The authentication process when [using a Service Account](#method-2--give-a-service-account-view-access-to-your-spreadsheet) involves the use of Node&rsquo;s [`crypto`](https://nodejs.org/api/crypto.html) library, which will bloat your browser bundle when it is [shimmed](https://github.com/crypto-browserify/crypto-browserify).
-
-To keep your byte footprint small, do:
-1. Enable [link-sharing on your spreadsheet](#method-1--enable-link-sharing-on-your-spreadsheet).
-2. Change your `require` calls to `cuba/src/array` (**1.14 KB** gzipped) and `cuba/src/stream` (**22.4 KB** gzipped). So, for example, we would have `require('cuba/src/array')` instead of `require('cuba').array`.
 
 ## CLI
 
