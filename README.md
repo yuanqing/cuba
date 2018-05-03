@@ -24,7 +24,7 @@
 First, [enable link-sharing](#method-1--enable-link-sharing-on-your-spreadsheet) on your [spreadsheet](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit?usp=sharing). Then, do:
 
 ```js
-const cuba = require('cuba').array
+const cuba = require('cuba')
 
 async function main () {
   const query = cuba('1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU')
