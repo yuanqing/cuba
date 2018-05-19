@@ -7,7 +7,7 @@ const cuba = require('./stream')
 const prettyPrintJson = require('./pretty-print-json')
 const version = require('../package.json').version
 
-const help = `
+const usageMessage = `
 Usage: cuba [query] [options]
 
 Query:
@@ -16,7 +16,7 @@ Query:
 
 Options:
   -c, --credentials <path>  Path to the Service Account credentials
-                            JSON file. This is only needed when link
+                            JSON file. This is only needed when link-
                             sharing is not enabled on the spreadsheet.
   -h, --help  Print this message.
   -i, --id <spreadsheetId>  The Google Sheets spreadsheet ID. This is
@@ -29,11 +29,6 @@ Options:
                                query on.
   -v, --version  Print the version number.
 `
-
-const logError = function (message) {
-  console.error('cuba: ' + message)
-  process.exit(1)
-}
 
 const knownOptions = {
   credentials: String,
@@ -52,30 +47,31 @@ const shorthands = {
   v: '--version'
 }
 
-const options = nopt(knownOptions, shorthands)
-
-if (options.help) {
-  console.log(help)
-  process.exit(0)
-}
-
-if (options.version) {
-  console.log(version)
-  process.exit(0)
-}
-
-const query = options.argv.remain[0]
-const id = options.id
-const serviceAccountCredentials =
-  options.key && require(path.join(process.cwd(), options.key))
-
 async function main () {
+  const options = nopt(knownOptions, shorthands)
+
+  if (options.help) {
+    console.log(usageMessage)
+    process.exit(0)
+  }
+
+  if (options.version) {
+    console.log(version)
+    process.exit(0)
+  }
+
+  const query = options.argv.remain[0]
+  const id = options.id
+  const serviceAccountCredentials =
+    options.key && require(path.join(process.cwd(), options.key))
+
   try {
     const queryStream = await cuba(id, serviceAccountCredentials)
     const stream = await queryStream(query)
     stream.pipe(prettyPrintJson()).pipe(process.stdout)
   } catch (error) {
-    logError(error)
+    console.error('cuba: ' + error.message)
+    process.exit(1)
   }
 }
 main()
