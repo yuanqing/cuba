@@ -1,1 +1,3 @@
-module.exports = require('./factory')()
+const getAccessToken = require('../get-access-token')
+
+module.exports = require('./factory')(getAccessToken)

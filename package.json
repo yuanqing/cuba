@@ -8,7 +8,8 @@
     "type": "git",
     "url": "git://github.com/yuanqing/cuba.git"
   },
-  "browser": "array.js",
+  "main": "src",
+  "browser": "src/browser.js",
   "bin": {
     "cuba": "src/cli.js"
   },
@@ -42,7 +43,7 @@
     "lint": "standard 'example/**/*.js' 'src/**/*.js'",
     "precommit": "lint-staged",
     "test": "yarn test-browser && yarn test-node",
-    "test-browser": "browserify --transform localenvify src/array/__tests__/index.js | tape-run",
+    "test-browser": "browserify --transform localenvify src/__tests__/browser.js | tape-run",
     "test-node": "tape --require localenv 'src/**/__tests__/*.js'",
     "weight": "browserify ./ --standalone cuba | uglifyjs --compress --mangle --toplevel | gzip-size"
   },
@@ -53,10 +54,7 @@
     ]
   },
   "files": [
-    "src",
-    "array.js",
-    "index.js",
-    "stream.js"
+    "src"
   ],
   "keywords": [
     "api",

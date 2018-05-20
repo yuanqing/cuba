@@ -11,7 +11,7 @@
 - Run [SQL-esque queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet, get results as JSON
 - Works in both Node and the browser
 - Perfect for prototyping, or leveraging Google Sheets as a collaborative datastore for your app
-- 1.55 KB gzipped
+- 1.54 KB gzipped
 
 <div align="center">
 
