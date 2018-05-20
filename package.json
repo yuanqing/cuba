@@ -53,7 +53,10 @@
     ]
   },
   "files": [
-    "src"
+    "src",
+    "array.js",
+    "index.js",
+    "stream.js"
   ],
   "keywords": [
     "api",
