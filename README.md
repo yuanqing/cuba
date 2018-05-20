@@ -2,9 +2,9 @@
 
 <div align="center">
 
-[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba)
-
 ***Google Sheets + SQL = JSON***
+
+[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba)
 
 </div>
 
@@ -25,7 +25,7 @@
 
 > [**Editable demo (CodePen)**](https://codepen.io/lyuanqing/pen/bMdXgY)
 
-To start, enable link-sharing on [our spreadsheet:](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit#gid=0)
+To start, [enable link-sharing on your spreadsheet:](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit#gid=0)
 
 1. Click the blue **`Share`** button on the top-right corner of the Google Sheets spreadsheet page.
 2. Click **`Get shareable link`** on the top-right corner of the modal.
