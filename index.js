@@ -1,1 +1,2 @@
-module.exports = require('./src/array')
+module.exports = require('./array')
+module.exports.stream = require('./stream')
