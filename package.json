@@ -28,6 +28,7 @@
     "lint-staged": "^7.1.1",
     "localenv": "^0.2.2",
     "localenvify": "^1.0.1",
+    "mkdirp": "^0.5.1",
     "nyc": "^11.8.0",
     "prettier-standard": "^8.0.1",
     "rimraf": "^2.6.2",
@@ -37,7 +38,8 @@
     "uglify-es": "^3.3.9"
   },
   "scripts": {
-    "clean": "rimraf '*.log' .nyc_output coverage",
+    "build": "rimraf build && mkdirp build && browserify ./ --standalone cuba | uglifyjs --compress --mangle --toplevel > build/cuba.min.js",
+    "clean": "rimraf '*.log' .nyc_output build coverage",
     "coverage": "rimraf .nyc_output coverage && nyc --reporter=html --reporter=lcov --reporter=text yarn test",
     "fix": "prettier-standard 'example/**/*.js' 'src/**/*.js'",
     "lint": "standard 'example/**/*.js' 'src/**/*.js'",
@@ -45,7 +47,7 @@
     "test": "yarn test-browser && yarn test-node",
     "test-browser": "browserify --transform localenvify src/__tests__/browser.js | tape-run",
     "test-node": "tape --require localenv 'src/**/__tests__/*.js'",
-    "weight": "browserify ./ --standalone cuba | uglifyjs --compress --mangle --toplevel | gzip-size"
+    "weight": "yarn build && gzip-size build/cuba.min.js"
   },
   "lint-staged": {
     "*.js": [
