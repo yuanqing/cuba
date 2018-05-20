@@ -44,6 +44,7 @@
     "fix": "prettier-standard 'example/**/*.js' 'src/**/*.js'",
     "lint": "standard 'example/**/*.js' 'src/**/*.js'",
     "precommit": "lint-staged",
+    "prepublishOnly": "yarn clean && yarn build",
     "test": "yarn test-browser && yarn test-node",
     "test-browser": "browserify --transform localenvify src/__tests__/browser.js | tape-run",
     "test-node": "tape --require localenv 'src/**/__tests__/*.js'",
@@ -56,6 +57,7 @@
     ]
   },
   "files": [
+    "build",
     "src"
   ],
   "keywords": [
