@@ -16,7 +16,7 @@
     "JSONStream": "^1.3.2",
     "duplexer": "^0.1.1",
     "google-auth-library": "^1.5.0",
-    "node-fetch": "^2.1.2",
+    "isomorphic-unfetch": "^2.0.0",
     "nopt": "^4.0.1"
   },
   "devDependencies": {

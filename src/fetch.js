@@ -1,5 +1,4 @@
-const fetch =
-  typeof window === 'undefined' ? require('node-fetch') : window.fetch
+const fetch = require('isomorphic-unfetch')
 
 module.exports = function (url, method, headers, body) {
   return fetch(url, {
