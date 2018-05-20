@@ -1,4 +1,4 @@
-const cuba = require('../src/stream')
+const cuba = require('..').stream
 const Transform = require('stream').Transform
 
 async function main () {
@@ -8,6 +8,7 @@ async function main () {
     new Transform({
       objectMode: true,
       transform: function (data, encoding, callback) {
+        console.log(data)
         // => { id: 1, name: 'foo' }
         // => { id: 2, name: 'bar' }
         // => { id: 3, name: 'baz' }
