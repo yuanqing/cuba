@@ -16,8 +16,9 @@ Query:
 
 Options:
   -c, --credentials <path>  Path to the Service Account credentials
-                            JSON file. This is only needed when link-
-                            sharing is not enabled on the spreadsheet.
+                            JSON file. This is to run queries on
+                            private spreadsheets that do not have
+                            link-sharing enabled.
   -h, --help  Print this message.
   -i, --id <spreadsheetId>  The Google Sheets spreadsheet ID. This is
                             the value between \`/d/\` and \`/edit\` in
