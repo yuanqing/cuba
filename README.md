@@ -9,7 +9,7 @@
 </div>
 
 - Run [SQL-esque queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet, get results as JSON
-- Works seamlessly in the browser and in Node
+- Works in both Node and the browser
 - Perfect for prototyping, or leveraging Google Sheets as a collaborative datastore for your app
 - 1.17 KB gzipped
 
@@ -51,7 +51,7 @@ main()
 
 ### Querying private spreadsheets
 
-In Node, we can also run queries on a spreadsheet that does not have link-sharing enabled:
+In Node, we can also run queries on private spreadsheets that do not have link-sharing enabled:
 
 <details>
 <summary><strong>1. Create a Service Account on the Google API Console.</strong></summary>
@@ -97,6 +97,12 @@ $ yarn add cuba
 
 ## API
 
+Feature | Supported in Node? | Supported in the Browser?
+:-|:-|:-
+[Array interface](#-array-interface) | Yes | Yes
+[Stream interface](#-stream-interface) | Yes |
+[Querying private spreadsheets](#querying-private-spreadsheets) | Yes |
+
 ### ➥ Array interface
 
 ```js
@@ -109,7 +115,7 @@ const cuba = require('cuba')
 
 - `spreadsheetId` is a string representing the Google Sheets spreadsheet to be queried. This is the value between `/d/` and `/edit` in the spreadsheet URL.
 
-- *(Node only)* `serviceAccountCredentials` is an optional object literal. This is only needed when link-sharing is not enabled on the spreadsheet.
+- *(Node only)* `serviceAccountCredentials` is an optional object literal. This is to run queries on private spreadsheets that do not have link-sharing enabled.
 
     Key | Description | Default
     :-|:-|:-
@@ -132,7 +138,7 @@ const cuba = require('cuba')
 ### ➥ Stream interface
 
 ```js
-const cubaStream = require('cuba/stream')
+const cubaStream = require('cuba').stream
 ```
 
 #### const querySpreadsheet = cubaStream(spreadsheetId [, serviceAccountCredentials])
@@ -154,8 +160,9 @@ Query:
 
 Options:
   -c, --credentials <path>  Path to the Service Account credentials
-                            JSON file. This is only needed when link-
-                            sharing is not enabled on the spreadsheet.
+                            JSON file. This is to run queries on
+                            private spreadsheets that do not have
+                            link-sharing enabled.
   -h, --help  Print this message.
   -i, --id <spreadsheetId>  The Google Sheets spreadsheet ID. This is
                             the value between `/d/` and `/edit` in
