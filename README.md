@@ -1,25 +1,11 @@
-![Cuba](media/header.png)
+# cuba [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba)
 
-<div align="center">
-
-***Google Sheets + SQL = JSON***
-
-[![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba)
-
-</div>
+> Google Sheets + SQL = JSON
 
 - Run [SQL-esque queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet, get results as JSON
-- Works in both Node and the browser
 - Perfect for prototyping, or leveraging Google Sheets as a collaborative datastore for your app
+- Works in both Node and the browser
 - 1.54 KB gzipped
-
-<div align="center">
-
-[**Usage**](#usage) &nbsp;&middot;&nbsp; [**Installation**](#installation) &nbsp;&middot;&nbsp; [**API**](#api) &nbsp;&middot;&nbsp; [**CLI**](#cli) &nbsp;&middot;&nbsp; [**Prior art**](#prior-art) &nbsp;&middot;&nbsp; [**License**](#license)
-
-</div>
-
----
 
 ## Usage
 
@@ -97,11 +83,11 @@ $ yarn add cuba
 
 ## API
 
-Feature | Supported in Node? | Supported in the Browser?
+Feature | Supported in Node? | Supported in the browser?
 :-|:-|:-
 [Array interface](#-array-interface) | Yes | Yes
-[Stream interface](#-stream-interface) | Yes |
-[Querying private spreadsheets](#querying-private-spreadsheets) | Yes |
+[Stream interface](#-stream-interface) | Yes | No
+[Querying private spreadsheets](#querying-private-spreadsheets) | Yes | No
 
 ### ➥ Array interface
 
