@@ -13,7 +13,7 @@
 
 To start, [enable link-sharing on your spreadsheet:](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit#gid=0)
 
-1. Click the blue **`Share`** button on the top-right corner of the Google Sheets spreadsheet page.
+1. Click the **`Share`** button on the top-right corner of the Google Sheets spreadsheet page.
 2. Click **`Get shareable link`** on the top-right corner of the modal.
 3. To the left of the grey **`Copy link`** button, ensure that access rights is set to **`Anyone with the link can view`**.
 
@@ -46,10 +46,10 @@ In Node, we can also run queries on private spreadsheets that do not have link-s
 1. Navigate to [the Google API Console](https://console.developers.google.com/apis/dashboard)
 2. Select a project from the drop-down box in the top bar.
 3. Click **`Credentials`** (the Key icon) on the left navigation bar.
-4. Click the blue **`Create credentials`** drop-down box, and select **`Service account key`**.
+4. Click the **`Create credentials`** drop-down box, and select **`Service account key`**.
 5. Click the **`Select…`** drop-down box, and select **`New service account`**.
 6. Enter a **`Service account name`**. For **`Role`**, select **`Project › Viewer`**. For **`Key type`**, select **`JSON`**.
-7. Click the blue **`Create`** button. This will generate a JSON file with the Service Account credentials. Note the `client_email` and `private_key` values in this JSON file.
+7. Click the **`Create`** button. This will generate a JSON file with the Service Account credentials. Note the `client_email` and `private_key` values in this JSON file.
 
 </p>
 </details>
@@ -59,8 +59,8 @@ In Node, we can also run queries on private spreadsheets that do not have link-s
 <p>
 
 1. Navigate to your spreadsheet.
-2. Click the blue **`Share`** button on the top-right corner of the page.
-3. In the **`Enter names or email addresses…`** text box, enter the `client_email` of the Service Account, then click the blue **`Send`** button.
+2. Click the **`Share`** button on the top-right corner of the page.
+3. In the **`Enter names or email addresses…`** text box, enter the `client_email` of the Service Account, then click the **`Send`** button.
 
 </p>
 </details>
