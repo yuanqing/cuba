@@ -141,29 +141,23 @@ const cubaStream = require('cuba').stream
 ```
 cuba [query]
 
-Run the given query on a Google Sheets spreadsheet.
-
-Commands:
-  cuba query [query]  Run the given query on a Google Sheets spreadsheet.
-                                                                       [default]
+Run the given query on a Google Sheets spreadsheet
 
 Positionals:
   query  The Google Visualization API Query Language query to run on the Google
-         Sheets spreadsheet. Defaults to 'select *'.                    [string]
+         Sheets spreadsheet                       [string] [default: "select *"]
 
 Options:
   --help             Show help                                         [boolean]
   --version          Show version number                               [boolean]
-  --credentials, -c  Path to the Service Account credentials JSON file. This is
-                     to run queries on private spreadsheets that do not have
-                     link-sharing enabled.                              [string]
-  --id, -i           The Google Sheets spreadsheet ID. This is the value between
-                     `/d/` and `/edit` in the spreadsheet URL.
-                                                             [string] [required]
-  --sheetId, -s      ID of the sheet to run the query on. This is the value
-                     after `#gid=` in the spreadsheet URL. Defaults to '0'.
-                                                         [string] [default: "0"]
-  --sheetName, -n    Name of the sheet to run the query on.             [string]
+  --credentials, -c  Path to the Service Account credentials JSON file; to run
+                     queries on private spreadsheets that do not have
+                     link-sharing enabled                               [string]
+  --id, -i           The Google Sheets spreadsheet ID; the value between `/d/`
+                     and `/edit` in the spreadsheet URL      [string] [required]
+  --sheetId, -s      ID of the sheet to run the query on; the value after
+                     `#gid=` in the spreadsheet URL      [string] [default: "0"]
+  --sheetName, -n    Name of the sheet to run the query on              [string]
 ```
 
 ## Prior art

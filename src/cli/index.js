@@ -5,7 +5,7 @@ const name = require('../../package.json').name
 
 yargs
   .scriptName(name)
-  .command(require('./commands/query'))
+  .command(require('./query'))
   .strict()
   .help()
   .version()
