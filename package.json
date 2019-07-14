@@ -8,47 +8,54 @@
     "type": "git",
     "url": "git://github.com/yuanqing/cuba.git"
   },
-  "main": "src",
+  "main": "src/index.js",
   "browser": "src/browser.js",
   "bin": {
     "cuba": "src/cli.js"
   },
   "dependencies": {
-    "JSONStream": "^1.3.2",
+    "JSONStream": "^1.3.5",
     "duplexer": "^0.1.1",
-    "google-auth-library": "^1.5.0",
-    "isomorphic-unfetch": "^2.0.0",
-    "nopt": "^4.0.1"
+    "google-auth-library": "^4.2.5",
+    "isomorphic-unfetch": "^3.0.0",
+    "nopt": "^4.0.1",
+    "yargs": "^13.2.4"
   },
   "devDependencies": {
-    "browserify": "^16.2.2",
-    "concat-stream": "^1.6.2",
-    "gzip-size-cli": "^2.1.0",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.1.1",
+    "browserify": "^16.3.0",
+    "browserify-istanbul": "^3.0.1",
+    "concat-stream": "^2.0.0",
+    "gzip-size-cli": "^3.0.0",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.2.0",
     "localenv": "^0.2.2",
     "localenvify": "^1.0.1",
     "mkdirp": "^0.5.1",
-    "nyc": "^11.8.0",
-    "prettier-standard": "^8.0.1",
-    "rimraf": "^2.6.2",
-    "standard": "^11.0.1",
-    "tape": "^4.9.0",
-    "tape-run": "^4.0.0",
-    "uglify-es": "^3.3.9"
+    "nyc": "^14.1.1",
+    "prettier-standard": "^9.1.1",
+    "rimraf": "^2.6.3",
+    "standard": "^13.0.2",
+    "tape": "^4.11.0",
+    "tape-istanbul": "^1.2.0",
+    "tape-run": "^6.0.0",
+    "terser": "^4.1.2"
   },
   "scripts": {
-    "build": "rimraf build && mkdirp build && browserify ./ --standalone cuba | uglifyjs --compress --mangle --toplevel > build/cuba.min.js",
-    "clean": "rimraf '*.log' .nyc_output build coverage",
-    "coverage": "rimraf .nyc_output coverage && nyc --reporter=html --reporter=lcov --reporter=text yarn test",
+    "clean": "rimraf '*.log' .nyc_output coverage",
+    "coverage": "rimraf coverage && yarn coverage-browser && yarn coverage-node",
+    "coverage-node": "rimraf .nyc_output coverage/node && mkdirp coverage/node && nyc --reporter=html --reporter=lcov --reporter=text --temp-dir coverage/node --report-dir coverage/node -- tape --require localenv 'src/**/__tests__/*.js'",
+    "coverage-browser": "rimraf .nyc_output coverage/browser && mkdirp coverage/browser && browserify src/__tests__/browser.js --plugin tape-istanbul/plugin | tape-run | tape-istanbul --output coverage/browser/coverage.json && nyc report --reporter text --reporter html --temp-dir coverage/browser --report-dir coverage/browser",
     "fix": "prettier-standard 'example/**/*.js' 'src/**/*.js'",
     "lint": "standard 'example/**/*.js' 'src/**/*.js'",
-    "precommit": "lint-staged",
-    "prepublishOnly": "yarn clean && yarn build",
     "test": "yarn test-browser && yarn test-node",
     "test-browser": "browserify --transform localenvify src/__tests__/browser.js | tape-run",
     "test-node": "tape --require localenv 'src/**/__tests__/*.js'",
-    "weight": "yarn build && gzip-size build/cuba.min.js"
+    "weight": "browserify src/index --standalone cuba | terser --compress --mangle --toplevel | gzip-size"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.js": [
@@ -57,7 +64,6 @@
     ]
   },
   "files": [
-    "build",
     "src"
   ],
   "keywords": [
