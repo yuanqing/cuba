@@ -2,13 +2,15 @@ const concat = require('concat-stream')
 const test = require('tape')
 const cuba = require('..')
 
-const id = '1ZlDwhcOm0dE23mtRvbmSZNn3i6eKgHHrfwHHK0xH-fM'
+const id = '1n6Yz2MfCw3LkeEX31VcpEKlFI5dA0dhWkXBSZ0K03ZQ'
 
+/* eslint-disable indent */
 const serviceAccountCredentials = process.env.CLIENT_EMAIL &&
   process.env.PRIVATE_KEY && {
     clientEmail: process.env.CLIENT_EMAIL,
     privateKey: process.env.PRIVATE_KEY
   }
+/* eslint-enable indent */
 
 if (serviceAccountCredentials) {
   test('runs a query on a spreadsheet via a Service Account', async function (t) {
