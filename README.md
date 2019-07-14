@@ -1,17 +1,16 @@
-# cuba [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba)
+# cuba [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![Bundle Size](https://badgen.net/bundlephobia/minzip/charming)](https://bundlephobia.com/result?p=cuba)
 
 > Google Sheets + SQL = JSON
 
 - Run [SQL-esque queries](https://developers.google.com/chart/interactive/docs/querylanguage#overview) against your Google Sheets spreadsheet, get results as JSON
 - Perfect for prototyping, or leveraging Google Sheets as a collaborative datastore for your app
 - Works in both Node and the browser
-- 1.54 KB gzipped
 
 ## Usage
 
 > [**Editable demo (CodePen)**](https://codepen.io/lyuanqing/pen/bMdXgY)
 
-To start, enable link-sharing on [our spreadsheet](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit#gid=0).
+To start, enable link-sharing on your spreadsheet:
 
 1. Click the **`Share`** button on the top-right corner of the Google Sheets spreadsheet page.
 2. Click **`Get shareable link`** on the top-right corner of the modal.
@@ -34,6 +33,8 @@ async function main () {
 }
 main()
 ```
+
+Here, `1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU` is the ID of [our example spreadsheet](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit#gid=0); it is the value between `/d/` and `/edit` in the spreadsheet URL.
 
 ### Querying private spreadsheets
 
@@ -89,7 +90,7 @@ Feature | Supported in Node? | Supported in the browser?
 [Stream interface](#-stream-interface) | Yes | No
 [Querying private spreadsheets](#querying-private-spreadsheets) | Yes | No
 
-### ➥ Array interface
+### Array interface
 
 ```js
 const cuba = require('cuba')
@@ -121,7 +122,7 @@ const cuba = require('cuba')
     `sheetName` | Name of the sheet to run the query on. | `undefined`
     `transform` | A function for transforming each item in the result. | The identity function
 
-### ➥ Stream interface
+### Stream interface
 
 ```js
 const cubaStream = require('cuba').stream
