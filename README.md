@@ -1,4 +1,4 @@
-# cuba [![npm Version](https://img.shields.io/npm/v/cuba.svg?style=flat)](https://www.npmjs.org/package/cuba) [![Build Status](https://img.shields.io/travis/yuanqing/cuba.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/cuba) [![Bundle Size](https://badgen.net/bundlephobia/minzip/charming)](https://bundlephobia.com/result?p=cuba)
+# cuba [![npm Version](https://badgen.net/npm/v/cuba)](https://www.npmjs.org/package/cuba) [![Build Status](https://badgen.net/travis/yuanqing/cuba?label=build)](https://travis-ci.org/yuanqing/cuba) [![Bundle Size](https://badgen.net/bundlephobia/minzip/cuba)](https://bundlephobia.com/result?p=cuba)
 
 > Google Sheets + SQL = JSON
 
