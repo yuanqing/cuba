@@ -15,7 +15,7 @@ To start, [enable link-sharing on your spreadsheet:](https://docs.google.com/spr
 
 1. Click the **`Share`** button on the top-right corner of the Google Sheets spreadsheet page.
 2. Click **`Get shareable link`** on the top-right corner of the modal.
-3. To the left of the grey **`Copy link`** button, ensure that access rights is set to **`Anyone with the link can view`**.
+3. To the left of the **`Copy link`** button, ensure that access rights is set to **`Anyone with the link can view`**.
 
 Then:
 
@@ -138,27 +138,31 @@ const cubaStream = require('cuba').stream
 ## CLI
 
 ```
-Usage: cuba [query] [options]
+cuba [query]
 
-Query:
-  The Google Visualization API Query Language query to run on the
-  Google Sheets spreadsheet. Defaults to 'select *'.
+Run the given query on a Google Sheets spreadsheet.
+
+Commands:
+  cuba query [query]  Run the given query on a Google Sheets spreadsheet.
+                                                                       [default]
+
+Positionals:
+  query  The Google Visualization API Query Language query to run on the Google
+         Sheets spreadsheet. Defaults to 'select *'.                    [string]
 
 Options:
-  -c, --credentials <path>  Path to the Service Account credentials
-                            JSON file. This is to run queries on
-                            private spreadsheets that do not have
-                            link-sharing enabled.
-  -h, --help  Print this message.
-  -i, --id <spreadsheetId>  The Google Sheets spreadsheet ID. This is
-                            the value between `/d/` and `/edit` in
-                            the spreadsheet URL.
-  -s, --sheetId <sheetId>  ID of the sheet to run the query on. This
-                           is the value after `#gid=` in the
-                           spreadsheet URL. Defaults to '0'.
-  -n, --sheetName <sheetName>  Name of the sheet to run the
-                               query on.
-  -v, --version  Print the version number.
+  --help             Show help                                         [boolean]
+  --version          Show version number                               [boolean]
+  --credentials, -c  Path to the Service Account credentials JSON file. This is
+                     to run queries on private spreadsheets that do not have
+                     link-sharing enabled.                              [string]
+  --id, -i           The Google Sheets spreadsheet ID. This is the value between
+                     `/d/` and `/edit` in the spreadsheet URL.
+                                                             [string] [required]
+  --sheetId, -s      ID of the sheet to run the query on. This is the value
+                     after `#gid=` in the spreadsheet URL. Defaults to '0'.
+                                                         [string] [default: "0"]
+  --sheetName, -m    Name of the sheet to run the query on.             [string]
 ```
 
 ## Prior art
