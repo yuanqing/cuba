@@ -9,7 +9,7 @@
     "url": "git://github.com/yuanqing/cuba.git"
   },
   "main": "src/index.js",
-  "browser": "src/array/index.js",
+  "browser": "src/browser.js",
   "bin": {
     "cuba": "src/cli/index.js"
   },
@@ -50,7 +50,7 @@
     "test": "yarn test-browser && yarn test-node",
     "test-browser": "browserify --transform localenvify src/array/__tests__/index.js | tape-run",
     "test-node": "tape --require localenv 'src/**/__tests__/*.js'",
-    "weight": "browserify src/index --standalone cuba | terser --compress --mangle --toplevel | gzip-size"
+    "weight": "browserify src/browser.js --standalone cuba | terser --compress --mangle --toplevel | gzip-size"
   },
   "husky": {
     "hooks": {
