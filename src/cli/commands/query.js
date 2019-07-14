@@ -32,7 +32,7 @@ module.exports = {
         "ID of the sheet to run the query on. This is the value after `#gid=` in the spreadsheet URL. Defaults to '0'."
     })
     yargs.option('sheetName', {
-      alias: ['m'],
+      alias: ['n'],
       type: 'string',
       describe: 'Name of the sheet to run the query on.'
     })

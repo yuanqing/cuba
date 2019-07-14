@@ -11,7 +11,7 @@
 
 > [**Editable demo (CodePen)**](https://codepen.io/lyuanqing/pen/bMdXgY)
 
-To start, [enable link-sharing on your spreadsheet:](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit#gid=0)
+To start, enable link-sharing on [our spreadsheet](https://docs.google.com/spreadsheets/d/1InLekepCq4XgInfMueA2E2bqDqICVHHTXd_QZab0AOU/edit#gid=0).
 
 1. Click the **`Share`** button on the top-right corner of the Google Sheets spreadsheet page.
 2. Click **`Get shareable link`** on the top-right corner of the modal.
@@ -162,7 +162,7 @@ Options:
   --sheetId, -s      ID of the sheet to run the query on. This is the value
                      after `#gid=` in the spreadsheet URL. Defaults to '0'.
                                                          [string] [default: "0"]
-  --sheetName, -m    Name of the sheet to run the query on.             [string]
+  --sheetName, -n    Name of the sheet to run the query on.             [string]
 ```
 
 ## Prior art
