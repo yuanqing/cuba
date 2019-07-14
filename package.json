@@ -9,7 +9,7 @@
     "url": "git://github.com/yuanqing/cuba.git"
   },
   "main": "src/index.js",
-  "browser": "src/browser.js",
+  "browser": "src/array/index.js",
   "bin": {
     "cuba": "src/cli/index.js"
   },
@@ -44,11 +44,11 @@
     "clean": "rimraf '*.log' .nyc_output coverage",
     "coverage": "rimraf coverage && yarn coverage-browser && yarn coverage-node",
     "coverage-node": "rimraf .nyc_output coverage/node && mkdirp coverage/node && nyc --reporter=html --reporter=lcov --reporter=text --temp-dir coverage/node --report-dir coverage/node -- tape --require localenv 'src/**/__tests__/*.js'",
-    "coverage-browser": "rimraf .nyc_output coverage/browser && mkdirp coverage/browser && browserify src/__tests__/browser.js --plugin tape-istanbul/plugin | tape-run | tape-istanbul --output coverage/browser/coverage.json && nyc report --reporter text --reporter html --temp-dir coverage/browser --report-dir coverage/browser",
+    "coverage-browser": "rimraf .nyc_output coverage/browser && mkdirp coverage/browser && browserify src/array/__tests__/index.js --plugin tape-istanbul/plugin | tape-run | tape-istanbul --output coverage/browser/coverage.json && nyc report --reporter text --reporter html --temp-dir coverage/browser --report-dir coverage/browser",
     "fix": "prettier-standard 'example/**/*.js' 'src/**/*.js'",
     "lint": "standard 'example/**/*.js' 'src/**/*.js'",
     "test": "yarn test-browser && yarn test-node",
-    "test-browser": "browserify --transform localenvify src/__tests__/browser.js | tape-run",
+    "test-browser": "browserify --transform localenvify src/array/__tests__/index.js | tape-run",
     "test-node": "tape --require localenv 'src/**/__tests__/*.js'",
     "weight": "browserify src/index --standalone cuba | terser --compress --mangle --toplevel | gzip-size"
   },
