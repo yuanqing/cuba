@@ -13,8 +13,8 @@ module.exports = function (transform) {
   const parseRowStream = parseJson('table.rows.*.c')
   let schema = null
   parseRowStream.on('header', function (data) {
-    if (data.cols == null) {
-      readableStream.emit('error')
+    if (data.errors) {
+      readableStream.emit('error', new Error(data.errors[0].detailed_message))
       readableStream.push(null)
       return
     }
