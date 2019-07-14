@@ -11,7 +11,7 @@
   "main": "src/index.js",
   "browser": "src/browser.js",
   "bin": {
-    "cuba": "src/cli.js"
+    "cuba": "src/cli/index.js"
   },
   "dependencies": {
     "JSONStream": "^1.3.5",
