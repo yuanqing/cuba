@@ -8,7 +8,7 @@ test('throws if no `id` specified', async function (t) {
   try {
     cuba()
   } catch (error) {
-    t.pass()
+    t.true(/^Error: Need a spreadsheet ID/.test(error.toString()))
   }
 })
 
